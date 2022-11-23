@@ -1,55 +1,47 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { fetchAPI } from "../lib/api"
+import UploadForm from '../components/upload'
 
 const Upload = ({objects}) => {
-    const [image, setImage] = useState(null)
-		const [objectId, setObjectId] = useState(null)
+  const [fieldId, setFieldId] = useState(null)
 
-    const handleSubmit = async (e) => {
-        console.log('handleSubmit')
-        e.preventDefault()
+  useEffect(() => {
+    var button = document.getElementsByClassName("button");
 
-        const formData = new FormData() // pure javascript nothing to do with react
-        formData.append('files', image)
-        formData.append('ref', 'api::object.object')
-        formData.append('refId', objectId[0]?.id) //'refId' The event Id
-        formData.append('field', 'cover_image') //'field' the image field we called 'image'
-
-        const res = await fetch(`https://cms.thenewlibrary.org/api/upload`, {
-            method: 'POST',
-            body: formData,
-        })
-
-        if (res.ok) {
-            console.log('res.ok')
-            console.log('res', res)
-        }
+    var addSelectClass = function(){
+      removeSelectClass();
+      this.classList.add('selected');	
+      setFieldId(this.id)
     }
 
-    const handleFileChange = (e) => {
-        console.log('handleFileChange')
-        console.log(e.target.files[0]) //this will give us an array and we want the first wone so we add 0
-        setImage(e.target.files[0])
+    var removeSelectClass = function(){
+      for (var i =0; i < button.length; i++) {
+        button[i].classList.remove('selected')
+      }
     }
-		const handleTextChange = (e) => {
-        console.log('handleTextChange')
-				setObjectId(objects.filter(object => object.attributes.object_id == e.target.value));
+    
+    for (var i =0; i < button.length; i++) {
+      button[i].addEventListener("click",addSelectClass);
     }
+  })
+
+    
     return (
-        <div>
-            <h1> Upload Image</h1>
-
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <input type='file' onChange={handleFileChange} />
-                </div>
-								<div>
-									<input type='text' onChange={handleTextChange} />
-								</div>
-                <input type='submit' value='Upload' className='btn' />
-            </form>
+      <div className='upload-page'>
+        <div className='interface'>
+            <h1> Upload your scan!</h1>
+            <p>Select:</p>
+            <div className='buttons'>
+              <div className='button' id="cover_image">Front Cover</div>
+              <div className='button' id="spines">Spine</div>
+              <div className='button' id="back_cover">Back Cover</div>
+              <div className='button' id="colophon">Colophon</div>
+              <div className='button' id="content">Content</div>
+            </div>
+            
+            <UploadForm objects={objects} fieldId={fieldId}/>
         </div>
+      </div> 
     )
 }
 
