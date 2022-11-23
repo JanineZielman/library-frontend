@@ -3,31 +3,34 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { fetchAPI } from "../lib/api"
 
-const Home = ({ }) => {
+const Home = ({ objects }) => {
+  console.log(objects)
   return (
     <Layout>
       {/* <Seo seo={homepage.attributes.seo} /> */}
-      <h1>hello world</h1>
+      {objects.map((item, i) => {
+        return(
+          <div className="object" key={`object${i}`}>
+            <span>{item.attributes.object_id}</span>
+            <h2>{item.attributes.title}</h2>
+            {/* <p>{item.attributes.year?.data?.attributes.year}</p> */}
+            {/* <p>{item.attributes.size?.data?.attributes.width}x{item.attributes.size.data.attributes.height}cm</p> */}
+          </div>
+        )
+      })}
     </Layout>
   )
 }
 
 export async function getStaticProps() {
-  // Run API calls in parallel
-  // const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
-  //   fetchAPI("/articles", { populate: "*" }),
-  //   fetchAPI("/categories", { populate: "*" }),
-  //   fetchAPI("/homepage", {
-  //     populate: {
-  //       hero: "*",
-  //       seo: { populate: "*" },
-  //     },
-  //   }),
-  // ])
+
+  const [objectRes] = await Promise.all([
+    fetchAPI("/objects", { populate: "*" }),
+  ])
 
   return {
     props: {
-
+      objects: objectRes.data,
     },
     revalidate: 1,
   }
