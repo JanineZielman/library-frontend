@@ -78,3 +78,18 @@ form{
 		width: 100%;
 	}
 }
+
+.grid{
+	display: flex;
+	flex-wrap: wrap;
+	.object{
+		width: 15vw;
+		margin: 14px;
+		p, span, h2{
+			margin: 0;
+		}
+		.cover-image{
+			margin-top: 10px;
+		}
+	}
+}

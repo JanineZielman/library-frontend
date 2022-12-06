@@ -4,6 +4,7 @@ import UploadForm from '../components/upload'
 
 const Upload = ({objects}) => {
   const [fieldId, setFieldId] = useState(null)
+  	const [fileName, setFileName] = useState(null)
 
   useEffect(() => {
     var button = document.getElementsByClassName("button");
@@ -12,6 +13,16 @@ const Upload = ({objects}) => {
       removeSelectClass();
       this.classList.add('selected');	
       setFieldId(this.id)
+      async function createFile(){
+        let response = await fetch('/export/scan001.jpg');
+        let data = await response.blob();
+        let metadata = {
+          type: 'image/jpeg'
+        };
+        setFileName(new File([data], "scan001.jpg", metadata));
+        console.log(fileName)
+      }
+      createFile();
     }
 
     var removeSelectClass = function(){
@@ -39,7 +50,7 @@ const Upload = ({objects}) => {
               <div className='button' id="content">Content</div>
             </div>
             
-            <UploadForm objects={objects} fieldId={fieldId}/>
+            <UploadForm objects={objects} fieldId={fieldId} fileName={fileName}/>
         </div>
       </div> 
     )
