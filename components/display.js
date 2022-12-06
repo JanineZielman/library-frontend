@@ -6,15 +6,21 @@ const Display = ({ fileName, objectId, fieldId}) => {
 		<>
 			<div className='display'>
 				<div className='object-info'>
-					<h1>{objectId?.[0].attributes.object_id}</h1>
-					<div className='wrapper'>
-						<h2>{objectId?.[0].attributes.title}</h2>
-						<h3><span>FRONT COVER</span><span>{objectId?.[0].attributes.cover_image.data ? '1' : '0'}/1</span></h3>
-						<h3><span>BACK COVER</span><span>{objectId?.[0].attributes.back_cover.data ? '1' : '0'}/1</span></h3>
-						<h3><span>SPINES</span></h3>
-						<h3><span>COLOPHON</span></h3>
-						<h3><span>CONTENT</span></h3>
-					</div>
+					{objectId?.[0] ?
+						<>
+							<h1>{objectId?.[0].attributes.object_id}</h1>
+							<div className='wrapper'>
+								<h2>{objectId?.[0].attributes.title}</h2>
+								<h3><span>FRONT COVER</span><span>{objectId?.[0].attributes.cover_image.data ? '1' : '0'}/1</span></h3>
+								<h3><span>BACK COVER</span><span>{objectId?.[0].attributes.back_cover.data ? '1' : '0'}/1</span></h3>
+								<h3><span>SPINES</span></h3>
+								<h3><span>COLOPHON</span></h3>
+								<h3><span>CONTENT</span></h3>
+							</div>
+						</>
+					: 
+						<h1>...</h1>
+					}
 				</div>
 				<div className='object-scan'>
 					{fileName ?
