@@ -50,8 +50,9 @@ const Upload = ({objects}) => {
               <div className='button' id="content">Content</div>
             </div>
             
-            <UploadForm objects={objects} fieldId={fieldId} fileName={fileName}/>
         </div>
+        <UploadForm objects={objects} fieldId={fieldId} fileName={fileName}/>
+        
       </div> 
     )
 }
