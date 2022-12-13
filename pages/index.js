@@ -26,7 +26,7 @@ const Home = ({ objects }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
   const [objectRes] = await Promise.all([
     fetchAPI("/objects", { populate: "*" }),
@@ -35,8 +35,7 @@ export async function getStaticProps() {
   return {
     props: {
       objects: objectRes.data,
-    },
-    revalidate: 1,
+    }
   }
 }
 
