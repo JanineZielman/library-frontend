@@ -11,6 +11,7 @@ const Upload = ({objects}) => {
 
     var addSelectClass = function(){
       removeSelectClass();
+      setFileName(null);
       this.classList.add('selected');	
       setFieldId(this.id)
       async function createFile(){
@@ -20,7 +21,6 @@ const Upload = ({objects}) => {
           type: 'image/jpeg'
         };
         setFileName(new File([data], "scan.jpg", metadata));
-        console.log(fileName)
       }
       createFile();
     }

@@ -19,20 +19,20 @@ const Display = ({ fileName, objectId, fieldId}) => {
 							</div>
 						</>
 					: 
-						<h1>...</h1>
+						<h1>TYPE IN OBJECT CODE</h1>
 					}
 				</div>
 				<div className='object-scan'>
-					{fileName ?
+					{(fileName && objectId?.[0]) ?
 						<>
-							<h1>SCAN</h1>
+							<h1>PREVIEW</h1>
 							<div className='preview-image'>
 								<img src={`/export/${fileName.name}`}/>
 							</div>
 						</> 
 					:
 						<>
-							<h1>START SCANNING</h1>
+							<h1>SELECT TYPE</h1>
 						</>
 					}
 				</div>
