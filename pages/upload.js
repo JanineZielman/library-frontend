@@ -14,12 +14,12 @@ const Upload = ({objects}) => {
       this.classList.add('selected');	
       setFieldId(this.id)
       async function createFile(){
-        let response = await fetch('/export/scan001.jpg');
+        let response = await fetch('/export/scan.jpg');
         let data = await response.blob();
         let metadata = {
           type: 'image/jpeg'
         };
-        setFileName(new File([data], "scan001.jpg", metadata));
+        setFileName(new File([data], "scan.jpg", metadata));
         console.log(fileName)
       }
       createFile();
@@ -60,7 +60,7 @@ const Upload = ({objects}) => {
 export async function getStaticProps() {
 
   const [objectRes] = await Promise.all([
-    fetchAPI("/objects", { populate: "*" }),
+    fetchAPI("/objects?pagination[limit]=100&populate=*"),
   ])
 
   return {

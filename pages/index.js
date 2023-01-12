@@ -29,7 +29,7 @@ const Home = ({ objects }) => {
 export async function getServerSideProps() {
 
   const [objectRes] = await Promise.all([
-    fetchAPI("/objects", { populate: "*" }),
+    fetchAPI("/objects?pagination[limit]=100&populate=*"),
   ])
 
   return {
