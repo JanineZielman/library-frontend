@@ -15,7 +15,7 @@ const Upload = ({objects}) => {
       this.classList.add('selected');	
       setFieldId(this.id)
       async function createFile(){
-        let response = await fetch('/export/scan.jpg');
+        let response = await fetch('/export/final/scan.jpg');
         let data = await response.blob();
         let metadata = {
           type: 'image/jpeg'

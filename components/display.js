@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 const Display = ({ fileName, objectId, fieldId}) => {
-	console.log(objectId)
 	return(
 		<>
 			<div className='display'>
@@ -27,7 +26,7 @@ const Display = ({ fileName, objectId, fieldId}) => {
 						<>
 							<h1>PREVIEW</h1>
 							<div className='preview-image'>
-								<img src={`/export/${fileName.name}`}/>
+								<img src={`/export/final/${fileName.name}`}/>
 							</div>
 						</> 
 					:
