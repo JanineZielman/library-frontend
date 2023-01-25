@@ -14,25 +14,22 @@ const Upload = ({objects}) => {
       setFileName(null);
       this.classList.add('selected');	
       setFieldId(this.id)
-      // async function createFile(){
-      //   let response = await fetch('/export/final/scan.jpg');
-      //   let data = await response.blob();
-      //   let metadata = {
-      //     type: 'image/jpeg'
-      //   };
-      //   setFileName(new File([data], "scan.jpg", metadata));
-      // }
-      // createFile();
     }
 
     var addFile = function(){
-      async function createFile(){
-        let response = await fetch('/export/final/scan.jpg');
-        let data = await response.blob();
-        let metadata = {
-          type: 'image/jpeg'
-        };
-        setFileName(new File([data], "scan.jpg", metadata));
+      function createFile(){
+        fetch('/export/final/scan.jpg').then(
+          function(response){
+            return response.blob();
+          }
+        ).then(
+          function(image){
+            let metadata = {
+              type: 'image/jpeg'
+            };
+            return setFileName(new File([image], "scan.jpg", metadata));
+          }
+        )
       }
       createFile();
     }
@@ -45,10 +42,8 @@ const Upload = ({objects}) => {
     
     for (var i =0; i < button.length; i++) {
       button[i].addEventListener("click",addSelectClass);
+      button[i].addEventListener("click", addFile);
     }
-
-    // addFile();
-    setInterval(addFile,1000);
   })
 
     
@@ -66,7 +61,7 @@ const Upload = ({objects}) => {
             </div>
             
         </div>
-        <UploadForm objects={objects} fieldId={fieldId} fileName={fileName}/>
+        <UploadForm objects={objects} fileName={fileName}/>
         
       </div> 
     )
