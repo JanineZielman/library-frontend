@@ -18,8 +18,8 @@ const Display = ({ fileName, objectId}) => {
 								<h3><span>COLOPHON</span><span>{objectId?.[0].attributes.colophon.data ? objectId?.[0].attributes.colophon.data.length : '0' }</span></h3>
 								<h3><span>CONTENT</span><span>{objectId?.[0].attributes.content.data ? objectId?.[0].attributes.content.data.length : '0' }</span></h3>
 								<div className='images'>
-									<div className='image'><Image image={objectId?.[0].attributes.cover_image} object-fit="contain"/></div>
-									<div className='image'><Image image={objectId?.[0].attributes.back_cover} object-fit="contain"/></div>
+									{objectId?.[0].attributes.cover_image.data && <div className='image'><Image image={objectId?.[0].attributes.cover_image} object-fit="contain"/></div>}
+									{objectId?.[0].attributes.back_cover.data && <div className='image'><Image image={objectId?.[0].attributes.back_cover} object-fit="contain"/></div>}
 								</div>
 							</div>
 						</>
