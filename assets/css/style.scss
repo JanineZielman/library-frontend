@@ -4,12 +4,15 @@ body, html{
 	padding: 0;
 	width: 100vw;
 	overflow-x: hidden;
+	background-color: #000;
+	color: white;
 }
 
 .interface{
 	width: 900px;
-	background-color: #EFEFEF;
-	border: 2px solid #000;
+	background-color: black;
+	border: 2px solid #fff;
+	color: white;
 	border-radius: 25px;
 	display: block;
 	margin: auto;
@@ -36,17 +39,17 @@ body, html{
 	.button {
 		padding: 5px 20px;
 		margin: 0 10px;
-		border: 1px solid #000;
+		border: 1px solid #fff;
 		display: block;
 		width: 100px;
 		border-radius: 25px;
-		background-color: #fff;
+		background-color: #000;
 		text-align: center;
 		transition: all 0.4s ease-in-out;
 		&:hover, &.selected{
 			cursor: pointer;
-			background-color: #000;
-			color: #fff;
+			background-color: #fff;
+			color: #000;
 		}
 	}
 }
@@ -54,11 +57,11 @@ body, html{
 .btn {
 	margin-top: 24px;
 	padding: 5px 20px;
-	border: 1px solid #000;
+	border: 1px solid #fff;
 	display: block;
 	width: 100px;
 	border-radius: 25px;
-	background-color: #fff;
+	background-color: #000;
 	text-align: center;
 	transition: all 0.4s ease-in-out;
 	font-size: 18px;
@@ -66,8 +69,8 @@ body, html{
 	&:hover,
 	&.selected {
 		cursor: pointer;
-		background-color: #000;
-		color: #fff;
+		background-color: #fff;
+		color: #000;
 	}
 }
 
@@ -79,7 +82,8 @@ form{
 	align-items: center;
 	.text-input{
 		border: none;
-		border-bottom: 1px solid #000;
+		border-bottom: 1px solid #fff;
+		color: #fff;
 		margin-top: 10px;
 		width: 100%;
 		background-color: transparent;
@@ -124,7 +128,7 @@ form{
 	h1{
 		font-weight: 300;
 		width: 97.5%;
-		border-bottom: 1px solid white;
+		border-bottom: 1px solid black;
 		padding-left: 2.5%;
 		padding-bottom: 14px;
 		line-height: 1;
