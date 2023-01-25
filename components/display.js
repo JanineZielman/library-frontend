@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Image from '../components/image'
 
 const Display = ({ fileName, objectId}) => {
-	// console.log(objectId?.[0]?.attributes)
 	return(
 		<>
 			<div className='display'>
@@ -18,8 +17,16 @@ const Display = ({ fileName, objectId}) => {
 								<h3><span>COLOPHON</span><span>{objectId?.[0].attributes.colophon.data ? objectId?.[0].attributes.colophon.data.length : '0' }</span></h3>
 								<h3><span>CONTENT</span><span>{objectId?.[0].attributes.content.data ? objectId?.[0].attributes.content.data.length : '0' }</span></h3>
 								<div className='images'>
-									{objectId?.[0].attributes.cover_image.data && <div className='image'><Image image={objectId?.[0].attributes.cover_image} object-fit="contain"/></div>}
-									{objectId?.[0].attributes.back_cover.data && <div className='image'><Image image={objectId?.[0].attributes.back_cover} object-fit="contain"/></div>}
+									{objectId?.[0].attributes.cover_image.data && <div className='image'><Image image={objectId?.[0].attributes.cover_image.data}/></div>}
+									{objectId?.[0].attributes.back_cover.data && <div className='image'><Image image={objectId?.[0].attributes.back_cover.data}/></div>}
+									{objectId?.[0].attributes.colophon.data.map((item, i) =>{
+										console.log(item)
+										return(
+											<div className='image'>
+												<Image image={item}/>
+											</div>
+										)
+									})}
 								</div>
 							</div>
 						</>
@@ -28,7 +35,7 @@ const Display = ({ fileName, objectId}) => {
 					}
 				</div>
 				<div className='object-scan'>
-					{(fileName && objectId?.[0]) ?
+					{(fileName) ?
 						<>
 							<h1>PREVIEW</h1>
 							<div className='preview-image'>

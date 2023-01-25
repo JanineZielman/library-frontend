@@ -25,11 +25,15 @@ const UploadForm = ({ fieldId, fileName}) => {
 				console.log('res.ok')
 				console.log('res', res)
 				console.log(formData)
+				fetchAPI(`/objects?filters[object_id][$eq]=${document.getElementById('id_field').value}&populate=*`).then(
+					function(response){
+						return setObjectId(response.data);
+					}
+				);
 		}
 	}
 
 	const handleTextChange = (e) => {
-		console.log('handleTextChange')
 		fetchAPI(`/objects?filters[object_id][$eq]=${e.target.value}&populate=*`).then(
 			function(response){
 				return setObjectId(response.data);
