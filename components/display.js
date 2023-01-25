@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const Display = ({ fileName, objectId, fieldId}) => {
+const Display = ({ fileName, objectId, fieldId, loading}) => {
 	return(
 		<>
 			<div className='display'>
@@ -26,7 +26,11 @@ const Display = ({ fileName, objectId, fieldId}) => {
 						<>
 							<h1>PREVIEW</h1>
 							<div className='preview-image'>
-								<img src={`/export/final/${fileName.name}`}/>
+								{loading ?
+									 <p>loading...</p>
+									:
+									<img src={`/export/final/${fileName.name}`}/>
+								}	
 							</div>
 						</> 
 					:

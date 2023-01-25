@@ -4,6 +4,14 @@ import Display from '../components/display'
 const UploadForm = ({ objects, fieldId, fileName}) => {
 	const [objectId, setObjectId] = useState(null);
 
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		setInterval(setLoading(true), 500)
+		setInterval(setLoading(false), 1000)
+		console.log('hello')
+	});
+
 	const handleSubmit = async (e) => {
 		console.log('handleSubmit')
 		e.preventDefault()
@@ -39,7 +47,7 @@ const UploadForm = ({ objects, fieldId, fileName}) => {
 				<input type='text' onChange={handleTextChange} className="text-input"/>
 				<input type='submit' value='Upload' className='btn' />
 			</form>
-			<Display fileName={fileName} objectId={objectId} fieldId={fieldId}/>
+			<Display fileName={fileName} objectId={objectId} fieldId={fieldId} loading={loading}/>
 		</>
 	)
 }

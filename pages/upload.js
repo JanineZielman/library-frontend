@@ -14,6 +14,18 @@ const Upload = ({objects}) => {
       setFileName(null);
       this.classList.add('selected');	
       setFieldId(this.id)
+      // async function createFile(){
+      //   let response = await fetch('/export/final/scan.jpg');
+      //   let data = await response.blob();
+      //   let metadata = {
+      //     type: 'image/jpeg'
+      //   };
+      //   setFileName(new File([data], "scan.jpg", metadata));
+      // }
+      // createFile();
+    }
+
+    var addFile = function(){
       async function createFile(){
         let response = await fetch('/export/final/scan.jpg');
         let data = await response.blob();
@@ -34,6 +46,9 @@ const Upload = ({objects}) => {
     for (var i =0; i < button.length; i++) {
       button[i].addEventListener("click",addSelectClass);
     }
+
+    // addFile();
+    setInterval(addFile,1000);
   })
 
     
