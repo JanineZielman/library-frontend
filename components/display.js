@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Image from '../components/image'
 
 const Display = ({ fileName, objectId}) => {
-	console.log(objectId?.[0]?.attributes)
+	// console.log(objectId?.[0]?.attributes)
 	return(
 		<>
 			<div className='display'>

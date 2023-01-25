@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Display from '../components/display'
+import { fetchAPI } from "../lib/api"
 
-const UploadForm = ({ objects, fieldId, fileName}) => {
+const UploadForm = ({ fieldId, fileName}) => {
 	const [objectId, setObjectId] = useState(null);
 
 	const handleSubmit = async (e) => {
-		console.log('handleSubmit')
 		e.preventDefault()
-
 
 		const formData = new FormData() // pure javascript nothing to do with react
 
@@ -30,13 +29,19 @@ const UploadForm = ({ objects, fieldId, fileName}) => {
 	}
 
 	const handleTextChange = (e) => {
-			console.log('handleTextChange')
-			setObjectId(objects.filter(object => object.attributes.object_id == e.target.value));
+		console.log('handleTextChange')
+		fetchAPI(`/objects?filters[object_id][$eq]=${e.target.value}&populate=*`).then(
+			function(response){
+				return setObjectId(response.data);
+			}
+		);
 	}
+
+
 	return(
 		<>
 			<form onSubmit={handleSubmit}>
-				<input type='text' onChange={handleTextChange} className="text-input"/>
+				<input type='text' onChange={handleTextChange} className="text-input" id="id_field"/>
 				<input type='submit' value='Upload' className='btn' />
 			</form>
 			<Display fileName={fileName} objectId={objectId} fieldId={fieldId}/>

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { fetchAPI } from "../lib/api"
 import UploadForm from '../components/upload'
 
-const Upload = ({objects}) => {
+const Upload = () => {
   const [fieldId, setFieldId] = useState(null)
-  	const [fileName, setFileName] = useState(null)
+  const [fileName, setFileName] = useState(null)
 
   useEffect(() => {
     var button = document.getElementsByClassName("button");
@@ -61,24 +61,10 @@ const Upload = ({objects}) => {
             </div>
             
         </div>
-        <UploadForm objects={objects} fieldId={fieldId} fileName={fileName}/>
+        <UploadForm fieldId={fieldId} fileName={fileName}/>
         
       </div> 
     )
-}
-
-export async function getStaticProps() {
-
-  const [objectRes] = await Promise.all([
-    fetchAPI("/objects?pagination[limit]=100&populate=*"),
-  ])
-
-  return {
-    props: {
-      objects: objectRes.data,
-    },
-    revalidate: 1,
-  }
 }
 
 export default Upload
