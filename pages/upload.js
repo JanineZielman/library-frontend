@@ -61,7 +61,7 @@ const Upload = ({objects}) => {
             </div>
             
         </div>
-        <UploadForm objects={objects} fileName={fileName}/>
+        <UploadForm objects={objects} fieldId={fieldId} fileName={fileName}/>
         
       </div> 
     )
