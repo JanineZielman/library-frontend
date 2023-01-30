@@ -5,7 +5,6 @@ import { fetchAPI } from "../lib/api"
 import Image from "../components/image"
 
 const Home = ({ objects }) => {
-  // console.log(objects)
   return (
     <Layout>
       {/* <Seo seo={homepage.attributes.seo} /> */}
