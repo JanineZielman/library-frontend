@@ -16,7 +16,7 @@ const Home = ({ objects }) => {
               <span>{item.attributes.object_id}</span>
               <h2>{item.attributes.title}</h2>
               <div className="cover-image">
-                {item.attributes.cover_image.data &&<Image image={item.attributes.cover_image}/>}
+                {item.attributes.cover_image.data &&<Image image={item.attributes.cover_image.data}/>}
               </div>
             </div>
           )
