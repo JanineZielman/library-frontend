@@ -94,8 +94,10 @@ form{
 }
 
 .grid{
-	display: flex;
-	flex-wrap: wrap;
+	.infinite-scroll-component{
+		display: flex;
+		flex-wrap: wrap;
+	}
 	.object{
 		width: 15vw;
 		margin: 14px;

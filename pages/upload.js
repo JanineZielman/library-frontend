@@ -35,7 +35,6 @@ const Upload = () => {
 
 
     document.onkeydown = function (e) {
-      console.log(e)
       const cover_image = document.getElementById('cover_image');
       const back_cover = document.getElementById('back_cover');
       const spines = document.getElementById('spines');
