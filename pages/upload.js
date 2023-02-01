@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { fetchAPI } from "../lib/api"
-import UploadForm from '../components/upload'
+import Display from '../components/display'
 
 const Upload = () => {
   const [fieldId, setFieldId] = useState(null)
   const [fileName, setFileName] = useState(null)
+  const [submitKey, setSubmitKey] = useState(null)
 
   useEffect(() => {
-    var button = document.getElementsByClassName("button");
-
-    var addSelectClass = function(){
-      removeSelectClass();
-      setFileName(null);
-      this.classList.add('selected');	
-      setFieldId(this.id)
-    }
+    var button = document.getElementsByClassName("category");
 
     var addFile = function(){
       function createFile(){
@@ -39,30 +32,63 @@ const Upload = () => {
         button[i].classList.remove('selected')
       }
     }
-    
-    for (var i =0; i < button.length; i++) {
-      button[i].addEventListener("click",addSelectClass);
-      button[i].addEventListener("click", addFile);
-    }
+
+
+    document.onkeydown = function (e) {
+      console.log(e)
+      const cover_image = document.getElementById('cover_image');
+      const back_cover = document.getElementById('back_cover');
+      const spines = document.getElementById('spines');
+      const colophon = document.getElementById('colophon');
+      const content = document.getElementById('content');
+      var keyCode = e.key;
+      if(keyCode == '-') {
+        removeSelectClass();
+        setFileName(null);
+        cover_image.classList.add('selected');	
+        setFieldId(cover_image.id);
+        addFile();
+      }
+      if(keyCode == '=') {
+        removeSelectClass();
+        setFileName(null);
+        back_cover.classList.add('selected');	
+        setFieldId(back_cover.id);
+        addFile();
+      }
+      if(keyCode == '[') {
+        removeSelectClass();
+        setFileName(null);
+        spines.classList.add('selected');	
+        setFieldId(spines.id);
+        addFile();
+      }
+      if(keyCode == ']') {
+        removeSelectClass();
+        setFileName(null);
+        colophon.classList.add('selected');	
+        setFieldId(colophon.id);
+        addFile();
+      }
+      if(keyCode == ';') {
+        removeSelectClass();
+        setFileName(null);
+        content.classList.add('selected');	
+        setFieldId(content.id);
+        addFile();
+      }
+      if(keyCode == '.') {
+        setSubmitKey(true);
+      } else {
+        setSubmitKey(false);
+      }
+    };
   })
 
     
     return (
       <div className='upload-page'>
-        <div className='interface'>
-            <h1> Upload your scan!</h1>
-            <p>Select:</p>
-            <div className='buttons'>
-              <div className='button' id="cover_image">Front Cover</div>
-              <div className='button' id="spines">Spine</div>
-              <div className='button' id="back_cover">Back Cover</div>
-              <div className='button' id="colophon">Colophon</div>
-              <div className='button' id="content">Content</div>
-            </div>
-            
-        </div>
-        <UploadForm fieldId={fieldId} fileName={fileName}/>
-        
+        <Display fieldId={fieldId} fileName={fileName} submitKey={submitKey}/>
       </div> 
     )
 }
