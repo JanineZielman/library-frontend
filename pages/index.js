@@ -34,11 +34,11 @@ const Home = ({ objects, numberOfPosts }) => {
         >
           {posts.map((item, i) => {
             return(
-              <LazyLoad height={200}>
+              <LazyLoad height={300}>
                 <div className="object" key={`object${i}`}>
                   <span>{item.attributes.object_id}</span>
                   <h2>{item.attributes.title}</h2>
-                  <div className="cover-image">
+                  <div className={`cover-image`}>
                     {item.attributes.cover_image.data &&<Image image={item.attributes.cover_image.data}/>}
                   </div>
                 </div>
