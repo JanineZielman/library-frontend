@@ -279,16 +279,45 @@ form{
 }
 
 .object-page{
-	width: 90%;
-	margin: 2.5% 5%;
-	h1{
+	width: 95%;
+	margin: 1% 2.5%;
+	.flex{
+		display: flex;
+	}
+	.main-info{
+		width: 40%;
+		span{
+			display: block;
+			line-height: 1.5;
+		}
+		.small-info{
+			margin-top: 24px;
+		}
+	}
+	.scroll{
+		width: 60%;
+		display: flex;
+		margin: 24px auto;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		.image{
+			margin: 48px 0;
+		}
+	}
+	.image{
+		width: 60%;
+		height: 95vh;
+	}
+	h1, h2, h3{
 		margin: 0;
 	}
 	.cover-image{
-		height: 75vh;
+		height: 95vh;
 		width: 100%;
-		display: block;
-		margin: 2.5% auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		div{
 			height: 100%;
 			width: 100%;
