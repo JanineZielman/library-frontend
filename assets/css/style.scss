@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
 
+@font-face {
+	font-family: 'Avara';
+	src: url('Avara-Bold.woff2') format('woff2');
+}
+
 $h1: 48px;
 $h2: 24px;
 $h3: 20px;
@@ -9,12 +14,15 @@ $span: 12px;
 
 h1{
 	font-size: $h1;
+	font-family: 'Avara';
 }
 h2{
 	font-size: $h2;
+	font-family: 'Avara';
 }
 h3{
 	font-size: $h3;
+	font-family: 'Avara';
 }
 h4{
 	font-size: $h4;
