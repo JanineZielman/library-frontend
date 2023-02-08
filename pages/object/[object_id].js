@@ -8,6 +8,11 @@ import LazyLoad from 'react-lazyload';
 
 const Object = ({ object }) => {
   console.log(object)
+  let relations = [];
+  for (let i = 0; i < object.Relations.length; i++) { 
+    relations.push(object.Relations[i].person_role.data.attributes.role)
+  }
+  let filtered = [...new Set(relations)]
   return (
     <Layout>
       {/* <Seo seo={homepage.attributes.seo} /> */}
@@ -20,15 +25,23 @@ const Object = ({ object }) => {
             <div className="small-info">
               {object.year &&<span className="small">Year: {object.year}</span>}
               {object.type &&<span className="small">Type: {object.type.data.attributes.type}</span>}
-              {object.Relations.map((item, i) => {
+              {filtered?.map((role, i) => {
                 return(
                   <>
-                    {item.first_name &&
-                      <span className="small">{item.person_role.data.attributes.role}: {item.first_name} {item.last_name}</span>
-                    }
-                    {item.organisation &&
-                      <span className="small">{item.person_role.data.attributes.role}: {item.organisation}</span>
-                    }
+                    <span className="small role">{role}:
+                      {object.Relations.filter(rel => rel.person_role.data.attributes.role === role).map((item, i) => {
+                        return(
+                          <>
+                            {item.first_name &&
+                              <span> {item.first_name} {item.last_name}</span>
+                            }
+                            {item.organisation &&
+                              <span>{item.organisation}</span>
+                            }
+                          </>
+                        )
+                      })}
+                    </span>
                   </>
                 )
               })}
@@ -73,7 +86,7 @@ const Object = ({ object }) => {
 
 export async function getServerSideProps({params}) {
   
-    const objectRes = await fetchAPI(`/objects?&filters[object_id][$eq]=${params.object_id}&populate[Relations][populate]=*&populate[cover_image][populate]=*&populate[back_cover][populate]=*&populate[spines][populate]=*&populate[colophone][populate]=*&populate[content][populate]=*&populate=*`);
+    const objectRes = await fetchAPI(`/objects?&filters[object_id][$eq]=${params.object_id}&populate[Relations][populate]=*&populate[cover_image][populate]=*&populate[back_cover][populate]=*&populate[spines][populate]=*&populate[colophon][populate]=*&populate[content][populate]=*&populate=*`);
     
   
     return {

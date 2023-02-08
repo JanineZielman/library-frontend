@@ -292,6 +292,21 @@ form{
 		}
 		.small-info{
 			margin-top: 24px;
+			span{
+				display: flex;
+				flex-wrap: wrap;
+				span{
+					margin-left: 5px;
+					&:last-child{
+						&:after{
+							content: '';
+						}
+					}
+					&:after{
+						content: ',';
+					}
+				}
+			}
 		}
 	}
 	.scroll{
