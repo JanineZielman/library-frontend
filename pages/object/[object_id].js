@@ -17,11 +17,17 @@ const Object = ({ object }) => {
     <Layout>
       {/* <Seo seo={homepage.attributes.seo} /> */}
       <div className="object-page">
+        <div className="top-bar">
+          <h1>{object.title}</h1>
+          {object.subtitle &&<h3>{object.subtitle}</h3>}
+          <div className="info-book">
+            <div className={`color-dot ${object.colorcode1?.data?.attributes.slug}1`}></div>
+            <div className={`color-dot ${object.colorcode2?.data?.attributes.slug}2`}></div>
+            <span className="small">{object.object_id}</span>
+          </div>
+        </div>
         <div className="flex">
           <div className="main-info">
-            <span className="small">{object.object_id}</span>
-            <h1>{object.title}</h1>
-            {object.subtitle &&<h3>{object.subtitle}</h3>}
             <div className="small-info">
               {object.year &&<span className="small">Year: {object.year}</span>}
               {object.type &&<span className="small">Type: {object.type.data.attributes.type}</span>}
@@ -138,7 +144,7 @@ const Object = ({ object }) => {
 
 export async function getServerSideProps({params}) {
   
-    const objectRes = await fetchAPI(`/objects?&filters[object_id][$eq]=${params.object_id}&populate[Relations][populate]=*&populate[cover_image][populate]=*&populate[back_cover][populate]=*&populate[spines][populate]=*&populate[colophon][populate]=*&populate[content][populate]=*&populate[bindings][populate]=*&populate[covers][populate]=*&populate[edges][populate]=*&populate[spine_types][populate]=*&populate[insides][populate]=*&populate[languages][populate]=*&populate=*`);
+    const objectRes = await fetchAPI(`/objects?&filters[object_id][$eq]=${params.object_id}&populate[Relations][populate]=*&populate[cover_image][populate]=*&populate[back_cover][populate]=*&populate[spines][populate]=*&populate[colophon][populate]=*&populate[content][populate]=*&populate[bindings][populate]=*&populate[covers][populate]=*&populate[edges][populate]=*&populate[spine_types][populate]=*&populate[insides][populate]=*&populate[languages][populate]=*&populate[colorcode1][populate]=*&populate[colorcode2][populate]=*&populate=*`);
     
   
     return {

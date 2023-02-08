@@ -142,38 +142,6 @@ form{
 			margin-top: 10px;
 			position: relative;
 		}
-		.info{
-			display: flex;
-			align-items: center;
-			margin-bottom: 10px;
-		}
-		.color-dot{
-			width: 12px;
-			height: 12px;
-			border-radius: 50%;
-			margin-left: 5px;
-			&.yellow1{
-				background-color: yellow;
-			}
-			&.blue1{
-				background-color: blue;
-			}
-			&.yellow2{
-				background-color: yellow;
-			}
-			&.blue2{
-				background-color: blue;
-			}
-			&.green2{
-				background-color: green;
-			}
-			&.gold2{
-				background-color: gold;
-			}
-			&.purple2{
-				background-color: purple;
-			}
-		}
 	}
 }
 
@@ -279,46 +247,46 @@ form{
 }
 
 .object-page{
+	.top-bar{
+		position: fixed;
+		top: 0;
+		left: 0;
+		padding: 1% 2%;
+	}
 	.flex{
-		display: flex;
 	}
 	.main-info{
 		width: 36%;
-		// background-color: red;
 		height: 100%;
 		position: fixed;
 		padding: 2%;
+		margin-top: 80px;
 		span{
-			display: block;
+			display: flex;
+			flex-wrap: wrap;
 			line-height: 1.4;
 			margin-bottom: 5px;
-		}
-		.small-info{
-			margin-top: 24px;
 			span{
-				display: flex;
-				flex-wrap: wrap;
-				span{
-					margin: 0;
-					&:last-child{
-						&:after{
-							content: '';
-						}
-					}
+				margin: 0;
+				&:last-child{
 					&:after{
-						content: ',';
-						margin-right: 5px;
+						content: '';
 					}
+				}
+				&:after{
+					content: ',';
+					margin-right: 5px;
 				}
 			}
 		}
+
 	}
 	.image-scroll{
-		width: 60%;
+		width: 55%;
 		margin-left: 40%;
-		height: 95vh;
+		height: 90vh;
 		.image{
-			height: 95vh;
+			height: 90vh;
 			width: 100%;
 			display: flex;
 			justify-content: center;
@@ -337,5 +305,38 @@ form{
 	}
 	h1, h2, h3{
 		margin: 0;
+	}
+}
+
+.info-book{
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+.color-dot{
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	margin-right: 5px;
+	&.yellow1{
+		background-color: yellow;
+	}
+	&.blue1{
+		background-color: blue;
+	}
+	&.yellow2{
+		background-color: yellow;
+	}
+	&.blue2{
+		background-color: blue;
+	}
+	&.green2{
+		background-color: green;
+	}
+	&.gold2{
+		background-color: gold;
+	}
+	&.purple2{
+		background-color: purple;
 	}
 }
