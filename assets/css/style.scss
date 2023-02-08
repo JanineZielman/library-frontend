@@ -1,7 +1,4 @@
-@font-face {
-	font-family: "RepMo";
-	src: url("RepMo___.otf") format("opentype");
-}
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
 
 $h1: 48px;
 $h2: 24px;
@@ -25,9 +22,13 @@ h4{
 p{
 	font-size: $p;
 }
-span{
+span.small{
 	font-size: $span;
-	font-family: RepMo;
+	font-family: 'JetBrains Mono', monospace;
+}
+a{
+	text-decoration: none;
+	color: inherit;
 }
 
 body, html{
@@ -133,24 +134,18 @@ form{
 	.object{
 		width: 12vw;
 		margin: 4vw;
-		h2{
-			text-overflow: ellipsis;
-			width: 100%;
-			height: 54px;
-			display: -webkit-box;   
-			-webkit-line-clamp: 2;   
-			-webkit-box-orient: vertical;     
-			overflow: hidden; 
-		}
+		display: block;
 		p, span, h2{
 			margin: 0;
 		}
 		.cover-image{
 			margin-top: 10px;
+			position: relative;
 		}
 		.info{
 			display: flex;
 			align-items: center;
+			margin-bottom: 10px;
 		}
 		.color-dot{
 			width: 12px;
@@ -281,4 +276,27 @@ form{
 .upload-button{
 	color: white;
 	display: none;
+}
+
+.object-page{
+	width: 90%;
+	margin: 2.5% 5%;
+	h1{
+		margin: 0;
+	}
+	.cover-image{
+		height: 75vh;
+		width: 100%;
+		display: block;
+		margin: 2.5% auto;
+		div{
+			height: 100%;
+			width: 100%;
+		}
+		img{
+			object-fit: contain;
+			height: 100%;
+			width: auto;
+		}
+	}
 }
