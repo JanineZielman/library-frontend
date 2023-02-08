@@ -279,16 +279,19 @@ form{
 }
 
 .object-page{
-	width: 95%;
-	margin: 1% 2.5%;
 	.flex{
 		display: flex;
 	}
 	.main-info{
-		width: 40%;
+		width: 36%;
+		// background-color: red;
+		height: 100%;
+		position: fixed;
+		padding: 2%;
 		span{
 			display: block;
-			line-height: 1.5;
+			line-height: 1.4;
+			margin-bottom: 5px;
 		}
 		.small-info{
 			margin-top: 24px;
@@ -296,7 +299,7 @@ form{
 				display: flex;
 				flex-wrap: wrap;
 				span{
-					margin-left: 5px;
+					margin: 0;
 					&:last-child{
 						&:after{
 							content: '';
@@ -304,43 +307,35 @@ form{
 					}
 					&:after{
 						content: ',';
+						margin-right: 5px;
 					}
 				}
 			}
 		}
 	}
-	.scroll{
+	.image-scroll{
 		width: 60%;
-		display: flex;
-		margin: 24px auto;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		.image{
-			margin: 48px 0;
-		}
-	}
-	.image{
-		width: 60%;
+		margin-left: 40%;
 		height: 95vh;
+		.image{
+			height: 95vh;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 48px 0;
+			div{
+				height: 100%;
+				width: 100%;
+			}
+			img{
+				object-fit: contain;
+				height: 100%;
+				width: auto;
+			}
+		}
 	}
 	h1, h2, h3{
 		margin: 0;
-	}
-	.cover-image{
-		height: 95vh;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		div{
-			height: 100%;
-			width: 100%;
-		}
-		img{
-			object-fit: contain;
-			height: 100%;
-			width: auto;
-		}
 	}
 }

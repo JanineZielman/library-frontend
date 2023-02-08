@@ -28,7 +28,7 @@ const Object = ({ object }) => {
               {filtered?.map((role, i) => {
                 return(
                   <>
-                    <span className="small role">{role}:
+                    <span className="small role">{role}:&nbsp;
                       {object.Relations.filter(rel => rel.person_role.data.attributes.role === role).map((item, i) => {
                         return(
                           <>
@@ -45,39 +45,91 @@ const Object = ({ object }) => {
                   </>
                 )
               })}
+              {object.languages.data[0] &&
+                <span className="small">Language:&nbsp;
+                  {object.languages?.data?.map((item, i) => {
+                    return(
+                      <span>{item.attributes.language}</span>
+                    )
+                  })}
+                </span>
+              }
+              {object.bindings.data[0] &&
+                <span className="small">Binding:&nbsp;
+                  {object.bindings?.data?.map((item, i) => {
+                    return(
+                      <span>{item.attributes.binding}</span>
+                    )
+                  })}
+                </span>
+              }
+              {object.edges.data[0] &&
+                <span className="small">Edge:&nbsp;
+                  {object.edges?.data?.map((item, i) => {
+                    return(
+                      <span>{item.attributes.edge}</span>
+                    )
+                  })}
+                </span>
+              }
+              {object.spine_types.data[0] &&
+                <span className="small">Spine:&nbsp;
+                  {object.spine_types?.data?.map((item, i) => {
+                    return(
+                      <span>{item.attributes.spine}</span>
+                    )
+                  })}
+                </span>
+              }
+              {object.insides.data[0] &&
+                <span className="small">Inside:&nbsp;
+                  {object.insides?.data?.map((item, i) => {
+                    return(
+                      <span>{item.attributes.inside}</span>
+                    )
+                  })}
+                </span>
+              }
+              {object.covers.data[0] &&
+                <span className="small">Cover:&nbsp;
+                  {object.covers?.data?.map((item, i) => {
+                    return(
+                      <span>{item.attributes.cover}</span>
+                    )
+                  })}
+                </span>
+              }
             </div>
           </div>
-          <div className="image">
+          <div className="image-scroll">
             {object.cover_image.data &&
-              <div className="cover-image">
+              <div className="image cover-image">
                 <Image image={object.cover_image.data}/>
               </div>
             }
+            {object.content?.data?.map((item, i) =>{
+              return(
+                <div className='image'>
+                  <Image image={item}/>
+                </div>
+              )
+            })}
+            {object.colophon?.data?.map((item, i) =>{
+              return(
+                <div className='image'>
+                  <Image image={item}/>
+                </div>
+              )
+            })}
+            {object.spines?.data?.map((item, i) =>{
+              return(
+                <div className='image'>
+                  <Image image={item}/>
+                </div>
+              )
+            })}
+            {object.back_cover.data && <div className='image back-cover'><Image image={object.back_cover.data}/></div>}
           </div>
-        </div>
-        <div className="scroll">
-          {object.content?.data?.map((item, i) =>{
-            return(
-              <div className='image'>
-                <Image image={item}/>
-              </div>
-            )
-          })}
-          {object.colophon?.data?.map((item, i) =>{
-            return(
-              <div className='image'>
-                <Image image={item}/>
-              </div>
-            )
-          })}
-          {object.spines?.data?.map((item, i) =>{
-            return(
-              <div className='image'>
-                <Image image={item}/>
-              </div>
-            )
-          })}
-          {object.back_cover.data && <div className='image back-cover'><Image image={object.back_cover.data}/></div>}
         </div>
       </div>
     </Layout>
@@ -86,7 +138,7 @@ const Object = ({ object }) => {
 
 export async function getServerSideProps({params}) {
   
-    const objectRes = await fetchAPI(`/objects?&filters[object_id][$eq]=${params.object_id}&populate[Relations][populate]=*&populate[cover_image][populate]=*&populate[back_cover][populate]=*&populate[spines][populate]=*&populate[colophon][populate]=*&populate[content][populate]=*&populate=*`);
+    const objectRes = await fetchAPI(`/objects?&filters[object_id][$eq]=${params.object_id}&populate[Relations][populate]=*&populate[cover_image][populate]=*&populate[back_cover][populate]=*&populate[spines][populate]=*&populate[colophon][populate]=*&populate[content][populate]=*&populate[bindings][populate]=*&populate[covers][populate]=*&populate[edges][populate]=*&populate[spine_types][populate]=*&populate[insides][populate]=*&populate[languages][populate]=*&populate=*`);
     
   
     return {
