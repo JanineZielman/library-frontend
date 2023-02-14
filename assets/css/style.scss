@@ -12,6 +12,14 @@ $h4: 14px;
 $p: 14px;
 $span: 12px;
 
+::-moz-selection { /* Code for Firefox */
+	background: rgba(88, 88, 88, 0.5);
+}
+
+::selection {
+	background: rgba(88, 88, 88, 0.5);
+}
+
 h1{
 	font-size: $h1;
 	font-family: 'Avara';
@@ -382,6 +390,7 @@ form{
 		background-color: transparent;
 		font-size: 22vw;
 		text-align: center;
+		text-transform: uppercase;
 		:focus {
 			background-color: transparent;
 		}
