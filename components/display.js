@@ -77,11 +77,12 @@ const Display = ({fieldId, fileName, submitKey}) => {
 					<form onSubmit={handleSubmit}>
 						<div id="text-field-wrapper" className='text-field-wrapper'>
 							<div className='field'>
-								<div className='note note1'>Type in code and press enter to select...</div>
+								<div className='note note1'>Type in code and press enter:</div>
 								<input type='text' onChange={handleTextChange} className="text-input" id="id_field"/>
 							</div>
 						</div>
 						<div className='wrapper'>
+							<h3>{objectId?.attributes?.object_id}</h3>
 							<h2>{objectId?.attributes?.title}</h2>
 							<h3 id="cover_image" className='category'><span>FRONT COVER</span><span>{objectId?.attributes?.cover_image.data ? '1' : '0'}/1</span></h3>
 							<h3 id="back_cover" className='category'><span>BACK COVER</span><span>{objectId?.attributes?.back_cover.data ? '1' : '0'}/1</span></h3>

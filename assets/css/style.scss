@@ -170,6 +170,9 @@ form{
 		border-right: 1px solid white;
 		.wrapper{
 			width: 90%;
+			h2{
+				margin-top: 0;
+			}
 		}
 	}
 	.object-scan{
@@ -372,10 +375,13 @@ form{
 	}
 	.note{
 		width: 100%;
+		text-align: center;
 	}
 	.text-input{
 		border-bottom: 1px solid white;
 		background-color: transparent;
+		font-size: 22vw;
+		text-align: center;
 		:focus {
 			background-color: transparent;
 		}
