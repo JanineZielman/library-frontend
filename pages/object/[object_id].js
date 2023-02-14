@@ -3,8 +3,6 @@ import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import { fetchAPI } from "../../lib/api"
 import Image from "../../components/image"
-import InfiniteScroll from 'react-infinite-scroll-component';
-import LazyLoad from 'react-lazyload';
 
 const Object = ({ object }) => {
   console.log(object)

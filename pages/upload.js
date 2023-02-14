@@ -41,6 +41,14 @@ const Upload = () => {
       const colophon = document.getElementById('colophon');
       const content = document.getElementById('content');
       var keyCode = e.key;
+      if(keyCode === 'Escape') {
+        removeSelectClass();
+        setFileName(null);
+        document.getElementById('text-field-wrapper').style.display = 'flex';
+				const input = document.getElementById('id_field');
+				input.focus();
+				input.select();
+      }
       if(keyCode == '-') {
         removeSelectClass();
         setFileName(null);

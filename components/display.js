@@ -4,6 +4,7 @@ import { fetchAPI } from "../lib/api"
 
 const Display = ({fieldId, fileName, submitKey}) => {
 	const [objectId, setObjectId] = useState(null);
+	const [loading, setLoading] = useState(false);
 
 	const handleSubmit = async (e) => {
 		e?.preventDefault()
@@ -21,6 +22,7 @@ const Display = ({fieldId, fileName, submitKey}) => {
 				body: formData,
 		})
 
+
 		if (res.ok) {
 				console.log('res.ok')
 				console.log('res', res)
@@ -30,9 +32,12 @@ const Display = ({fieldId, fileName, submitKey}) => {
 						return setObjectId(response.data?.[0]);
 					}
 				);
+				setLoading(false);
+				document.getElementById('text-field-wrapper').style.display = 'flex';
 				const input = document.getElementById('id_field');
 				input.focus();
 				input.select();
+
 		}
 	}
 
@@ -52,13 +57,15 @@ const Display = ({fieldId, fileName, submitKey}) => {
 		})
 		input.onkeydown = function (e) {
 			if(e.which==13||e.keyCode==13){
-    		this.blur();
+    			this.blur();
+				document.getElementById('text-field-wrapper').style.display = 'none';
 			}
 		}
 	})
 
 	useEffect(() =>{
 		if(submitKey == true){
+			setLoading(true);
 			handleSubmit();
 		}
 	},[submitKey])
@@ -68,7 +75,12 @@ const Display = ({fieldId, fileName, submitKey}) => {
 			<div className='display'>
 				<div className='object-info'>
 					<form onSubmit={handleSubmit}>
-						<input type='text' onChange={handleTextChange} className="text-input" id="id_field"/>
+						<div id="text-field-wrapper" className='text-field-wrapper'>
+							<div className='field'>
+								<div className='note note1'>Type in code and press enter to select...</div>
+								<input type='text' onChange={handleTextChange} className="text-input" id="id_field"/>
+							</div>
+						</div>
 						<div className='wrapper'>
 							<h2>{objectId?.attributes?.title}</h2>
 							<h3 id="cover_image" className='category'><span>FRONT COVER</span><span>{objectId?.attributes?.cover_image.data ? '1' : '0'}/1</span></h3>
@@ -76,6 +88,7 @@ const Display = ({fieldId, fileName, submitKey}) => {
 							<h3 id="spines" className='category'><span>SPINES</span><span>{objectId?.attributes?.spines.data ? objectId?.attributes?.spines.data.length : '0' }</span></h3>
 							<h3 id="colophon" className='category'><span>COLOPHON</span><span>{objectId?.attributes?.colophon.data ? objectId?.attributes?.colophon.data.length : '0' }</span></h3>
 							<h3 id="content" className='category'><span>CONTENT</span><span>{objectId?.attributes?.content.data ? objectId?.attributes?.content.data.length : '0' }</span></h3>
+							{loading ? <div>loading...</div> : ''}
 							<div className='images'>
 								{objectId?.attributes?.cover_image.data && <div className='image front-cover'><Image image={objectId?.attributes?.cover_image.data}/></div>}
 								{objectId?.attributes?.content?.data?.map((item, i) =>{
@@ -107,16 +120,11 @@ const Display = ({fieldId, fileName, submitKey}) => {
 				</div>
 				<div className='object-scan'>
 					{(fileName) ?
-						<>
-							<h1>PREVIEW</h1>
-							<div className='preview-image'>
-								<img src={`/export/final/${fileName.name}`}/>
-							</div>
-						</> 
+						<div className='preview-image'>
+							<img src={`/export/final/${fileName.name}`}/>
+						</div>
 					:
-						<>
-							<h1>SELECT TYPE</h1>
-						</>
+						<></>
 					}
 				</div>
 			</div>
