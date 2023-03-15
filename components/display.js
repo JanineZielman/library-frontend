@@ -6,6 +6,8 @@ const Display = ({fieldId, fileName, submitKey}) => {
 	const [objectId, setObjectId] = useState(null);
 	const [loading, setLoading] = useState(false);
 
+	const [newObject, setNewObject] = useState(null);
+
 	const handleSubmit = async (e) => {
 		e?.preventDefault()
 
@@ -41,12 +43,46 @@ const Display = ({fieldId, fileName, submitKey}) => {
 		}
 	}
 
+	const newSubmit = async (e) => {
+		e?.preventDefault()
+
+		const res = await fetch(`https://cms.thenewlibrary.org/api/objects`, {
+				method: 'POST',
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					data: {
+							object_id: newObject,
+					},
+			}),
+		})
+
+		if (res.ok) {
+				console.log('res.ok')
+				console.log('res', res)
+				fetchAPI(`/objects?filters[object_id][$eq]=${newObject}&populate=*`).then(
+					function(response){
+						return setObjectId(response.data?.[0]);
+					}
+				);
+				setLoading(false);
+				document.getElementById('text-field-wrapper').style.display = 'flex';
+				const input = document.getElementById('id_field');
+				input.focus();
+				input.select();
+
+		}
+	}
+
 	const handleTextChange = (e) => {
 		fetchAPI(`/objects?filters[object_id][$eq]=${e.target.value}&populate=*`).then(
 			function(response){
 				return setObjectId(response.data?.[0]);
 			}
 		);
+		setNewObject(e.target.value)
+		console.log(e.target.value)
 	}
 	
 	useEffect(() => {
@@ -73,6 +109,18 @@ const Display = ({fieldId, fileName, submitKey}) => {
 	return(
 		<>
 			<div className='display'>
+				{!objectId &&
+					<div className='error'>
+						
+						<h1>
+							<span>{newObject}</span>
+							This object does not exist in the database!
+							<form onSubmit={newSubmit}>
+								<input type='submit' value='Upload' className='btn new-upload' />
+							</form>
+						</h1>
+					</div>
+				}
 				<div className='object-info'>
 					<form onSubmit={handleSubmit}>
 						<div id="text-field-wrapper" className='text-field-wrapper'>
@@ -81,53 +129,57 @@ const Display = ({fieldId, fileName, submitKey}) => {
 								<input type='text' onChange={handleTextChange} className="text-input" id="id_field"/>
 							</div>
 						</div>
-						<div className='wrapper'>
-							<h3>{objectId?.attributes?.object_id}</h3>
-							<h2>{objectId?.attributes?.title}</h2>
-							<h3 id="cover_image" className='category'><span>FRONT COVER</span><span>{objectId?.attributes?.cover_image.data ? '1' : '0'}/1</span></h3>
-							<h3 id="back_cover" className='category'><span>BACK COVER</span><span>{objectId?.attributes?.back_cover.data ? '1' : '0'}/1</span></h3>
-							<h3 id="spines" className='category'><span>SPINES</span><span>{objectId?.attributes?.spines.data ? objectId?.attributes?.spines.data.length : '0' }</span></h3>
-							<h3 id="colophon" className='category'><span>COLOPHON</span><span>{objectId?.attributes?.colophon.data ? objectId?.attributes?.colophon.data.length : '0' }</span></h3>
-							<h3 id="content" className='category'><span>CONTENT</span><span>{objectId?.attributes?.content.data ? objectId?.attributes?.content.data.length : '0' }</span></h3>
-							{loading ? <div>loading...</div> : ''}
-							<div className='images'>
-								{objectId?.attributes?.cover_image.data && <div className='image front-cover'><Image image={objectId?.attributes?.cover_image.data}/></div>}
-								{objectId?.attributes?.content?.data?.map((item, i) =>{
-									return(
-										<div className='image'>
-											<Image image={item}/>
-										</div>
-									)
-								})}
-								{objectId?.attributes?.colophon?.data?.map((item, i) =>{
-									return(
-										<div className='image'>
-											<Image image={item}/>
-										</div>
-									)
-								})}
-								{objectId?.attributes?.spines?.data?.map((item, i) =>{
-									return(
-										<div className='image'>
-											<Image image={item}/>
-										</div>
-									)
-								})}
-								{objectId?.attributes?.back_cover.data && <div className='image back-cover'><Image image={objectId?.attributes?.back_cover.data}/></div>}
+						{objectId &&
+							<div className='wrapper'>
+								<h3>{objectId?.attributes?.object_id}</h3>
+								<h2>{objectId?.attributes?.title}</h2>
+								<h3 id="cover_image" className='category'><span>FRONT COVER</span><span>{objectId?.attributes?.cover_image.data ? '1' : '0'}/1</span></h3>
+								<h3 id="back_cover" className='category'><span>BACK COVER</span><span>{objectId?.attributes?.back_cover.data ? '1' : '0'}/1</span></h3>
+								<h3 id="spines" className='category'><span>SPINES</span><span>{objectId?.attributes?.spines.data ? objectId?.attributes?.spines.data.length : '0' }</span></h3>
+								<h3 id="colophon" className='category'><span>COLOPHON</span><span>{objectId?.attributes?.colophon.data ? objectId?.attributes?.colophon.data.length : '0' }</span></h3>
+								<h3 id="content" className='category'><span>CONTENT</span><span>{objectId?.attributes?.content.data ? objectId?.attributes?.content.data.length : '0' }</span></h3>
+								{loading ? <div>loading...</div> : ''}
+								<div className='images'>
+									{objectId?.attributes?.cover_image.data && <div className='image front-cover'><Image image={objectId?.attributes?.cover_image.data}/></div>}
+									{objectId?.attributes?.content?.data?.map((item, i) =>{
+										return(
+											<div className='image'>
+												<Image image={item}/>
+											</div>
+										)
+									})}
+									{objectId?.attributes?.colophon?.data?.map((item, i) =>{
+										return(
+											<div className='image'>
+												<Image image={item}/>
+											</div>
+										)
+									})}
+									{objectId?.attributes?.spines?.data?.map((item, i) =>{
+										return(
+											<div className='image'>
+												<Image image={item}/>
+											</div>
+										)
+									})}
+									{objectId?.attributes?.back_cover.data && <div className='image back-cover'><Image image={objectId?.attributes?.back_cover.data}/></div>}
+								</div>
 							</div>
-						</div>
+						}
 						<input type='submit' value='Upload' className='btn upload-button' />
 					</form>
 				</div>
-				<div className='object-scan'>
-					{(fileName) ?
-						<div className='preview-image'>
-							<img src={`/export/final/${fileName.name}`}/>
-						</div>
-					:
-						<></>
-					}
-				</div>
+				{objectId &&
+					<div className='object-scan'>
+						{(fileName) ?
+							<div className='preview-image'>
+								<img src={`/export/final/${fileName.name}`}/>
+							</div>
+						:
+							<></>
+						}
+					</div>
+				}
 			</div>
 		</>
 	)
