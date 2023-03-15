@@ -57,6 +57,31 @@ body, html{
 	color: white;
 }
 
+nav{
+	display: flex;
+	justify-content: space-between;
+	width: 98%;
+	margin-left: 1%;
+	margin-top: 1%;
+	font-size: 30px;
+	font-family: Avara;
+	position: fixed;
+	z-index: 999;
+	.links{
+		text-align: right;
+		width: 60%;
+		display: flex;
+		justify-content: space-evenly;
+	}
+	.logo{
+		width: 25%;
+	}
+	.filter{
+		width: 15%;
+		text-align: right;
+	}
+}
+
 .interface{
 	width: 900px;
 	background-color: black;

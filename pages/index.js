@@ -42,7 +42,9 @@ const Home = ({ objects, numberOfPosts }) => {
                     <span className="small">{item.attributes.object_id}</span>
                   </div>
                   <div className="image-wrapper">
-                    {item.attributes.cover_image.data &&<Image image={item.attributes.cover_image.data}/>}
+                    {item.attributes.cover_image.data &&
+                      <Image image={item.attributes.cover_image.data} quality={10}/>
+                    }
                   </div>
                 </a>
               </LazyLoad>

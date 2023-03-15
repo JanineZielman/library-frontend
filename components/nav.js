@@ -5,7 +5,19 @@ const Nav = () => {
   return (
     <div>
       <nav>
-        
+        <div className="logo">
+          <a href="#">The New Library</a>
+        </div>
+        /
+        <div className="links">
+          <a href="#">Grid</a>
+          <a href="#">Index</a>
+          <a href="#">Timeline</a>
+        </div>
+        /
+        <div className="filter">
+          <a href="#">Filter</a>
+        </div>
       </nav>
     </div>
   )
