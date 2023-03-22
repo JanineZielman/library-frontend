@@ -452,3 +452,24 @@ form{
 		}
 	}
 }
+
+.list{
+	width: 100%;
+	margin-top: 100px;
+	.object{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		margin: 1vw 1vw;
+	}
+	span.small{
+		margin: 0 5px;
+	}
+}
+
+.timeline-item{
+	width: 100%;
+	.object{
+		width: 100%;
+	}
+}

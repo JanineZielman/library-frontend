@@ -6,7 +6,7 @@ import Image from "../components/image"
 import InfiniteScroll from 'react-infinite-scroll-component';
 import LazyLoad from 'react-lazyload';
 
-const Home = ({ objects, numberOfPosts }) => {
+const Timeline = ({ objects, numberOfPosts }) => {
   const [posts, setPosts] = useState(objects);
   const [hasMore, setHasMore] = useState(true);
 
@@ -32,26 +32,28 @@ const Home = ({ objects, numberOfPosts }) => {
           hasMore={hasMore}
           loader={<h4>Loading...</h4>}
         >
-          {posts.map((item, i) => {
-            return(
-              <>
-              {item.attributes.cover_image?.data &&
-                <LazyLoad height={200}>
-                  <a className="object" key={`object${i}`} href={`object/${item.attributes.object_id}`}>
-                    <div className="info-book">
-                      <div className={`color-dot ${item.attributes.colorcode1?.data?.attributes.slug}1`}></div>
-                      <div className={`color-dot ${item.attributes.colorcode2?.data?.attributes.slug}2`}></div>
-                      <span className="small">{item.attributes.object_id}</span>
-                    </div>
-                    <div className="image-wrapper">
-                      <Image image={item.attributes.cover_image.data} quality={10}/>
-                    </div>
-                  </a>
-                </LazyLoad>
-              }
-              </>
-            )
-          })}
+          <div className="timeline-item">
+            {posts.map((item, i) => {
+              return(
+                <>
+                {item.attributes.cover_image?.data &&
+                  <LazyLoad height={200}>
+                    <a className="object" key={`object${i}`} href={`object/${item.attributes.object_id}`}>
+                      <div className="info-book">
+                        <div className={`color-dot ${item.attributes.colorcode1?.data?.attributes.slug}1`}></div>
+                        <div className={`color-dot ${item.attributes.colorcode2?.data?.attributes.slug}2`}></div>
+                        <span className="small">{item.attributes.object_id}</span>
+                      </div>
+                      {/* <div className="image-wrapper">
+                        <Image image={item.attributes.cover_image.data} quality={10}/>
+                      </div> */}
+                    </a>
+                  </LazyLoad>
+                }
+                </>
+              )
+            })}
+          </div>
         </InfiniteScroll>
       </div>
     </Layout>
@@ -74,4 +76,4 @@ export async function getServerSideProps() {
   }
 }
 
-export default Home
+export default Timeline

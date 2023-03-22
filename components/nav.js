@@ -10,9 +10,9 @@ const Nav = () => {
         </div>
         /
         <div className="links">
-          <a href="#">Grid</a>
-          <a href="#">Index</a>
-          <a href="#">Timeline</a>
+          <a href="/">Grid</a>
+          <a href="/list">List</a>
+          <a href="/timeline">Timeline</a>
         </div>
         /
         <div className="filter">
