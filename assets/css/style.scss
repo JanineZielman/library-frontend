@@ -455,15 +455,46 @@ form{
 
 .list{
 	width: 100%;
-	margin-top: 100px;
+	margin-top: 130px;
+	min-height: 1000px;
 	.object{
 		width: 100%;
 		display: flex;
 		align-items: center;
-		margin: 1vw 1vw;
+		padding: 0.5vw 0.5vw;
+		margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+		&:hover{
+			background-color: white;
+			color: black;
+		}
 	}
 	span.small{
-		margin: 0 5px;
+		margin: 0 14px;
+		display: inline-block;
+		align-items: center;
+		width: 80px;
+		white-space: nowrap;
+		overflow-x: hidden;
+		text-overflow: ellipsis;
+	}
+	span.flex{
+		display: flex;
+	}
+	span.wide{
+		width: 200px;
+		display: inline-block;
+		align-items: center;
+		overflow-x: hidden;
+		text-overflow: ellipsis;
+		span:after{
+			content: ',';
+			margin-right: 5px;
+		}
+		span:last-child{
+			&:after{
+				content: '';
+			}
+		}
 	}
 }
 
@@ -472,4 +503,23 @@ form{
 	.object{
 		width: 100%;
 	}
+}
+
+.list .fixed-list{
+	position: fixed;
+	height: 120px;
+	background-color: #000;
+	top: 0;
+	margin-top: 0;
+	align-items: flex-end;
+	&:hover{
+		background-color: #000;
+		color: white;
+	}
+}
+
+.sticky{
+	position: sticky;
+	position:-webkit-sticky;
+	top: 20px;
 }
