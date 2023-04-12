@@ -8,15 +8,11 @@ const Nav = () => {
         <div className="logo">
           <a href="#">The New Library</a>
         </div>
-        /
+
         <div className="links">
           <a href="/">Grid</a>
           <a href="/list">List</a>
           <a href="/timeline">Timeline</a>
-        </div>
-        /
-        <div className="filter">
-          <a href="#">Filter</a>
         </div>
       </nav>
     </div>
