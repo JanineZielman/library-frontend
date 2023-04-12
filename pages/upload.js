@@ -37,7 +37,6 @@ const Upload = () => {
     document.onkeydown = function (e) {
       const cover_image = document.getElementById('cover_image');
       const back_cover = document.getElementById('back_cover');
-      const spines = document.getElementById('spines');
       const colophon = document.getElementById('colophon');
       const content = document.getElementById('content');
       var keyCode = e.key;
@@ -61,13 +60,6 @@ const Upload = () => {
         setFileName(null);
         back_cover.classList.add('selected');	
         setFieldId(back_cover.id);
-        addFile();
-      }
-      if(keyCode == '[') {
-        removeSelectClass();
-        setFileName(null);
-        spines.classList.add('selected');	
-        setFieldId(spines.id);
         addFile();
       }
       if(keyCode == ']') {

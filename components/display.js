@@ -135,7 +135,6 @@ const Display = ({fieldId, fileName, submitKey}) => {
 								<h2>{objectId?.attributes?.title}</h2>
 								<h3 id="cover_image" className='category'><span>FRONT COVER</span><span>{objectId?.attributes?.cover_image.data ? '1' : '0'}/1</span></h3>
 								<h3 id="back_cover" className='category'><span>BACK COVER</span><span>{objectId?.attributes?.back_cover.data ? '1' : '0'}/1</span></h3>
-								<h3 id="spines" className='category'><span>SPINES</span><span>{objectId?.attributes?.spines.data ? objectId?.attributes?.spines.data.length : '0' }</span></h3>
 								<h3 id="colophon" className='category'><span>COLOPHON</span><span>{objectId?.attributes?.colophon.data ? objectId?.attributes?.colophon.data.length : '0' }</span></h3>
 								<h3 id="content" className='category'><span>CONTENT</span><span>{objectId?.attributes?.content.data ? objectId?.attributes?.content.data.length : '0' }</span></h3>
 								{loading ? <div>loading...</div> : ''}
@@ -149,13 +148,6 @@ const Display = ({fieldId, fileName, submitKey}) => {
 										)
 									})}
 									{objectId?.attributes?.colophon?.data?.map((item, i) =>{
-										return(
-											<div className='image'>
-												<Image image={item}/>
-											</div>
-										)
-									})}
-									{objectId?.attributes?.spines?.data?.map((item, i) =>{
 										return(
 											<div className='image'>
 												<Image image={item}/>

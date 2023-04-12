@@ -125,13 +125,6 @@ const Object = ({ object }) => {
                 </div>
               )
             })}
-            {object.spines?.data?.map((item, i) =>{
-              return(
-                <div className='image'>
-                  <Image image={item}/>
-                </div>
-              )
-            })}
             {object.back_cover.data && <div className='image back-cover'><Image image={object.back_cover.data}/></div>}
           </div>
         </div>
@@ -142,7 +135,7 @@ const Object = ({ object }) => {
 
 export async function getServerSideProps({params}) {
   
-    const objectRes = await fetchAPI(`/objects?&filters[object_id][$eq]=${params.object_id}&populate[Relations][populate]=*&populate[cover_image][populate]=*&populate[back_cover][populate]=*&populate[spines][populate]=*&populate[colophon][populate]=*&populate[content][populate]=*&populate[bindings][populate]=*&populate[covers][populate]=*&populate[edges][populate]=*&populate[spine_types][populate]=*&populate[insides][populate]=*&populate[languages][populate]=*&populate[colorcode1][populate]=*&populate[colorcode2][populate]=*&populate=*`);
+    const objectRes = await fetchAPI(`/objects?&filters[object_id][$eq]=${params.object_id}&populate[Relations][populate]=*&populate[cover_image][populate]=*&populate[back_cover][populate]=*&populate[colophon][populate]=*&populate[content][populate]=*&populate[bindings][populate]=*&populate[covers][populate]=*&populate[edges][populate]=*&populate[spine_types][populate]=*&populate[insides][populate]=*&populate[languages][populate]=*&populate[colorcode1][populate]=*&populate[colorcode2][populate]=*&populate=*`);
     
   
     return {
