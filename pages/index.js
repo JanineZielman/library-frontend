@@ -22,6 +22,8 @@ const Home = ({ objects, numberOfPosts }) => {
     setHasMore(numberOfPosts > posts.length ? true : false);
   }, [posts]);
 
+  console.log(posts)
+
   return (
     <Layout>
       {/* <Seo seo={homepage.attributes.seo} /> */}

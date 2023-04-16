@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
 @font-face {
 	font-family: 'Avara';
@@ -67,6 +67,7 @@ nav{
 	font-family: Avara;
 	position: fixed;
 	z-index: 999;
+	top: 0;
 	.links{
 		text-align: right;
 		width: 500px;
@@ -76,10 +77,31 @@ nav{
 	.logo{
 		width: 25%;
 	}
-	.filter{
-		width: 15%;
-		text-align: right;
+}
+
+.button{
+	padding: 5px 20px;
+	border: 1px solid white;
+	border-radius: 20px;
+	background-color: black;
+	margin-right: 14px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: $p;
+	font-weight: 400;
+	&:hover{
+		color: black;
+		background-color: white;
 	}
+}
+
+.filter-search{
+	display: flex;
+	position: fixed;
+	top: 60px;
+	left: 1%;
+	z-index: 999;
 }
 
 .interface{
@@ -172,6 +194,7 @@ form{
 }
 
 .grid{
+	margin-top: 75px;
 	.infinite-scroll-component{
 		display: flex;
 		flex-wrap: wrap;
@@ -455,7 +478,7 @@ form{
 
 .list{
 	width: 100%;
-	margin-top: 130px;
+	margin-top: 90px;
 	min-height: 1000px;
 	.object{
 		width: 100%;
@@ -507,9 +530,9 @@ form{
 
 .list .fixed-list{
 	position: fixed;
-	height: 115px;
+	height: 150px;
 	background-color: #000;
-	top: 0;
+	top: 0px;
 	margin-top: 0;
 	align-items: flex-end;
 	padding-bottom: 1vw;
@@ -517,4 +540,29 @@ form{
 		background-color: #000;
 		color: white;
 	}
+}
+
+
+.filter-modal, .filter-modal2{
+	background-color: #222;
+	padding: 14px;
+	border-radius: 30px;
+	border: 1px solid white;
+	&.columns{
+		display: flex;
+		.column{
+			margin-right: 14px;
+			min-width: 100px;
+		}
+	}
+	.filter-items{
+		display: flex;
+		flex-direction: column;
+		margin-top: 5px;
+	}
+}
+
+.filter-options{
+	display: flex;
+	margin-top: 10px;
 }

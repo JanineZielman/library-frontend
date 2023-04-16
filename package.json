@@ -21,6 +21,7 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-lazyload": "^3.2.0",
     "react-markdown": "^4.2.2",
+    "react-modal": "^3.16.1",
     "react-moment": "^0.9.6",
     "sass": "^1.56.1"
   },
