@@ -66,7 +66,7 @@ nav{
 	font-size: 30px;
 	font-family: Avara;
 	position: fixed;
-	z-index: 999;
+	z-index: 777;
 	top: 0;
 	.links{
 		text-align: right;
@@ -352,6 +352,15 @@ form{
 }
 
 .object-page{
+	background-color: black;
+	position: fixed;
+	height: 100vh;
+	overflow-y: scroll;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	
 	.top-bar{
 		position: fixed;
 		top: 0;
@@ -362,15 +371,20 @@ form{
 	}
 	.main-info{
 		width: 36%;
-		height: 100%;
 		position: fixed;
+		bottom: 0;
 		padding: 2%;
-		margin-top: 80px;
 		span{
 			display: flex;
 			flex-wrap: wrap;
 			line-height: 1.4;
 			margin-bottom: 5px;
+			.ident{
+				width: 25%;
+			}
+			.info{
+				width: 75%;
+			}
 			span{
 				margin: 0;
 				&:last-child{
@@ -397,6 +411,9 @@ form{
 			justify-content: center;
 			align-items: center;
 			margin: 48px 0;
+			&:last-child{
+				padding-bottom: 50px;
+			}
 			div{
 				height: 100%;
 				width: 100%;
@@ -548,7 +565,7 @@ form{
 	left: 1vw;
 	opacity: 0;
 	z-index: 999;
-	transition: all 0.3s ease-in;
+	transition: all 0.2s ease-in;
 	&.open{
 		opacity: 1;
 	}
@@ -575,7 +592,7 @@ form{
 #modal1, #modal2{
 	height: 0;
 	width: 0;
-	transition: all 0.3s ease-in;
+	transition: all 0.2s ease-in;
 	visibility: hidden;
 	span{
 		color: transparent;
@@ -601,12 +618,29 @@ form{
 	white-space: nowrap;
 	#show_more{
 		&:before{
-			content: 'Fewer ';
+			content: 'More ';
 		}
 		&.open{
 			&:before{
-				content: 'More ';
+				content: 'Fewer ';
 			}
 		}
+	}
+}
+
+.close{
+	position: fixed;
+	top: 1vw;
+	right: 1vw;
+	padding: 14px;
+	border: 1px solid white;
+	line-height: 0.5;
+	margin: 0;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	&:hover{
+		color: black;
+		background-color: white;
 	}
 }

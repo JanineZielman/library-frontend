@@ -4,16 +4,19 @@ import Link from "next/link"
 const Nav = () => {
 
   function openModal() {
-    var element = document.getElementById("modal1");
+    var modal = document.getElementById("modal1");
+    modal.classList.toggle("open");
+
+    var element = document.getElementById("modal");
     element.classList.toggle("open");
 
-    var element2 = document.getElementById("modal");
-    element2.classList.toggle("open");
+    var modal2 = document.getElementById("modal2");
+    modal2.classList.remove("open");
   }
 
   function openModal2() {
-    var element = document.getElementById("modal2");
-    element.classList.toggle("open");
+    var modal2 = document.getElementById("modal2");
+    modal2.classList.toggle("open");
 
     var element2 = document.getElementById("show_more");
     element2.classList.toggle("open");
