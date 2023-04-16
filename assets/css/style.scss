@@ -542,10 +542,20 @@ form{
 	}
 }
 
+.filter-menu{
+	position: fixed;
+	top: 90px;
+	left: 1vw;
+	opacity: 0;
+	z-index: 999;
+	transition: all 0.3s ease-in;
+	&.open{
+		opacity: 1;
+	}
+}
 
 .filter-modal, .filter-modal2{
 	background-color: #222;
-	padding: 14px;
 	border-radius: 30px;
 	border: 1px solid white;
 	&.columns{
@@ -562,7 +572,41 @@ form{
 	}
 }
 
+#modal1, #modal2{
+	height: 0;
+	width: 0;
+	transition: all 0.3s ease-in;
+	visibility: hidden;
+	span{
+		color: transparent;
+	}
+	&.open{
+		height: auto;
+		visibility: visible;
+		width: fit-content;
+		margin-top: 14px;
+		padding: 10px 20px;
+		span{
+			color: white;
+		}
+	}
+}
+
+
 .filter-options{
 	display: flex;
-	margin-top: 10px;
+	position: absolute;
+	bottom: -40px;
+	z-index: 999;
+	white-space: nowrap;
+	#show_more{
+		&:before{
+			content: 'Fewer ';
+		}
+		&.open{
+			&:before{
+				content: 'More ';
+			}
+		}
+	}
 }
