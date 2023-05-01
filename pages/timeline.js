@@ -44,9 +44,20 @@ const Timeline = ({ objects, numberOfPosts }) => {
                         <div className={`color-dot ${item.attributes.colorcode2?.data?.attributes.slug}2`}></div>
                         <span className="small">{item.attributes.object_id}</span>
                       </div>
-                      {/* <div className="image-wrapper">
+                      <div className="image-wrapper">
                         <Image image={item.attributes.cover_image.data} quality={10}/>
-                      </div> */}
+                        {item.attributes.content?.data?.map((elem, i) =>{
+                            return(
+                              <Image image={elem} quality={10}/>
+                            )
+                          })}
+                          {item.attributes.colophon?.data?.map((elem, i) =>{
+                            return(
+                              <Image image={elem} quality={10}/>
+                            )
+                          })}
+                        <Image image={item.attributes.back_cover.data} quality={10}/>
+                      </div>
                     </a>
                   </LazyLoad>
                 }

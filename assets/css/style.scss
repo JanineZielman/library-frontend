@@ -539,9 +539,38 @@ form{
 }
 
 .timeline-item{
-	width: 100%;
+	position: relative;
+	.info-book{
+		position: sticky;
+		left: 24px;
+		z-index: 3;
+	}
 	.object{
 		width: 100%;
+	}
+	.image-wrapper{
+		width: 100%; 
+		white-space: nowrap;
+		overflow-x: scroll;
+		div{
+			display: inline-block!important;
+			width: auto;
+			height: 100%;
+			padding: 0;
+			position: relative !important;
+			margin-right: 24px!important;
+			div {
+				width: 0;
+				height: 0;
+				padding: 0!important;
+				position: relative !important;
+			}
+			img {
+				width: auto !important;
+				height: 400px !important;
+				position: relative!important;
+			}
+		}
 	}
 }
 

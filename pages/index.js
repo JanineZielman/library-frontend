@@ -39,7 +39,7 @@ const Home = ({ objects, numberOfPosts }) => {
               <>
               {item.attributes.cover_image?.data &&
                 <LazyLoad height={200}>
-                  <a className="object" key={`object${i}`} href={`object/${item.attributes.object_id}`}>
+                  <a className={`object ${item.attributes.colorcode1?.data?.attributes.slug}1 ${item.attributes.colorcode2?.data?.attributes.slug}2 ${item.attributes.type?.data?.attributes.slug}`} key={`object${i}`} href={`object/${item.attributes.object_id}`}>
                     <div className="info-book">
                       <div className={`color-dot ${item.attributes.colorcode1?.data?.attributes.slug}1`}></div>
                       <div className={`color-dot ${item.attributes.colorcode2?.data?.attributes.slug}2`}></div>
