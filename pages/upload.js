@@ -48,14 +48,14 @@ const Upload = () => {
 				input.focus();
 				input.select();
       }
-      if(keyCode == '-') {
+      if(keyCode == '=') {
         removeSelectClass();
         setFileName(null);
         cover_image.classList.add('selected');	
         setFieldId(cover_image.id);
         addFile();
       }
-      if(keyCode == '=') {
+      if(keyCode == '-') {
         removeSelectClass();
         setFileName(null);
         back_cover.classList.add('selected');	
