@@ -76,7 +76,7 @@ const Upload = () => {
         setFieldId(content.id);
         addFile();
       }
-      if(keyCode == '.') {
+      if(keyCode == ',') {
         setSubmitKey(true);
       } else {
         setSubmitKey(false);
