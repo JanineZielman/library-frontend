@@ -99,7 +99,7 @@ nav{
 .filter-search{
 	display: flex;
 	position: fixed;
-	top: 60px;
+	top: calc(45px + 1vw);
 	left: 1%;
 	z-index: 999;
 }
