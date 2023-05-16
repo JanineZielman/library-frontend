@@ -26,7 +26,7 @@ const Nav = () => {
     <div>
       <nav>
         <div className="logo">
-          <a href="#">The New Library</a>
+          <a href="/info">The New Library</a>
         </div>
 
         <div className="links">
