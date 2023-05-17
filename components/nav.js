@@ -22,6 +22,7 @@ const Nav = () => {
     element2.classList.toggle("open");
   }
 
+
   return (
     <div>
       <nav>
@@ -44,19 +45,51 @@ const Nav = () => {
           <div className="column">
             <span className="small">Designer</span>
             <div className="filter-items">
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
+              <a className="flex" href="/?designer=blue1">
+                <div className={`color-dot blue1`}></div>
+                <span className="small">Alums</span>
+              </a>
+              <a className="flex" href="/?designer=yellow1">
+                <div className={`color-dot yellow1`}></div>
+                <span className="small">External</span>
+              </a>
+              <a className="flex" href="/?designer=red1">
+                <div className={`color-dot red1`}></div>
+                <span className="small">Student</span>
+              </a>
+              <a className="flex" href="/?designer=green1">
+                <div className={`color-dot green1`}></div>
+                <span className="small">Published</span>
+              </a>
             </div>
           </div>
           <div className="column">
             <span className="small">Year</span>
             <div className="filter-items">
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
+            <a className="flex" href="/?designer=gold2">
+                <div className={`color-dot gold2`}></div>
+                <span className="small">2021-2030</span>
+              </a>
+              <a className="flex" href="/?designer=purple2">
+                <div className={`color-dot purple2`}></div>
+                <span className="small">2011-2020</span>
+              </a>
+              <a className="flex" href="/?designer=green2">
+                <div className={`color-dot green2`}></div>
+                <span className="small">2001-2010</span>
+              </a>
+              <a className="flex" href="/?designer=blue2">
+                <div className={`color-dot blue2`}></div>
+                <span className="small">1991-2000</span>
+              </a>
+              <a className="flex" href="/?designer=orange2">
+                <div className={`color-dot orange2`}></div>
+                <span className="small">1981-1990</span>
+              </a>
+              <a className="flex" href="/?designer=black2">
+                <div className={`color-dot black2`}></div>
+                <span className="small">… - 1980</span>
+              </a>
             </div>
           </div>
           <div className="column">

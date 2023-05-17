@@ -75,7 +75,7 @@ nav{
 		justify-content: space-between;
 	}
 	.logo{
-		width: 25%;
+		width: 30%;
 	}
 }
 
@@ -200,11 +200,14 @@ form{
 		flex-wrap: wrap;
 	}
 	.object{
+		width: 0;
 		width: 12vw;
 		margin: 4vw;
-		display: block;
 		p, span, h2{
 			margin: 0;
+		}
+		&.non-active{
+			display: none;
 		}
 		.cover-image{
 			margin-top: 10px;
@@ -452,6 +455,12 @@ form{
 	&.blue1{
 		background-color: blue;
 	}
+	&.red1{
+		background-color: red;
+	}
+	&.green1{
+		background-color: green;
+	}
 	&.yellow2{
 		background-color: yellow;
 	}
@@ -459,13 +468,19 @@ form{
 		background-color: blue;
 	}
 	&.green2{
-		background-color: green;
+		background-color: greenyellow;
 	}
 	&.gold2{
 		background-color: gold;
 	}
 	&.purple2{
 		background-color: purple;
+	}
+	&.orange2{
+		background-color: orange;
+	}
+	&.black2{
+		background-color: grey;
 	}
 }
 
@@ -716,4 +731,8 @@ span.wide{
 		color: black;
 		background-color: white;
 	}
+}
+
+.flex{
+	display: flex;
 }
