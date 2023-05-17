@@ -37,7 +37,7 @@ const Timeline = ({ objects, numberOfPosts }) => {
               return(
                 <>
                 {item.attributes.cover_image?.data &&
-                  <LazyLoad height={200}>
+                  <LazyLoad>
                     <a className="object" key={`object${i}`} href={`object/${item.attributes.object_id}`}>
                       <div className="info-book">
                         <div className={`color-dot ${item.attributes.colorcode1?.data?.attributes.slug}1`}></div>
@@ -57,6 +57,41 @@ const Timeline = ({ objects, numberOfPosts }) => {
                             )
                           })}
                         <Image image={item.attributes.back_cover.data} quality={10}/>
+                      </div>
+                      <div class="all-info">
+                        {item.attributes.title &&<div><span className="small">Title: {item.attributes.title}</span></div>}
+                        {item.attributes.year &&<div><span className="small">Year: {item.attributes.year}</span></div>}
+                        {item.attributes.type.data.attributes.type && <div><span className="small">Type: {item.attributes.type.data.attributes.type}</span></div>}
+                        {item.attributes.languages.data.length > 0 && <div><span className="small wide">Languages: {item.attributes.languages.data.map((lang, i) =>{
+                            return(
+                              <span>{lang.attributes.language}</span>
+                            )
+                          })}
+                        </span></div>}
+                        {item.attributes.covers.data.length > 0 &&<div><span className="small wide">Cover: {item.attributes.covers?.data?.map((cover, i) =>{
+                            return(
+                              <span>{cover.attributes.cover}</span>
+                            )
+                          })}
+                        </span></div>}
+                        {item.attributes.bindings.data.length > 0 &&<div><span className="small wide">Binding: {item.attributes.bindings.data.map((binding, i) =>{
+                            return(
+                              <span>{binding.attributes.binding}</span>
+                            )
+                          })}
+                        </span></div>}
+                        {item.attributes.spine_types.data.length > 0 &&<div><span className="small wide">Spine: {item.attributes.spine_types.data.map((spine, i) =>{
+                            return(
+                              <span>{spine.attributes.spine}</span>
+                            )
+                          })}
+                        </span></div>}
+                        {item.attributes.edges.data.length > 0 &&<div><span className="small wide">Edge: {item.attributes.edges.data.map((edge, i) =>{
+                            return(
+                              <span>{edge.attributes.edge}</span>
+                            )
+                          })}
+                        </span></div>}
                       </div>
                     </a>
                   </LazyLoad>

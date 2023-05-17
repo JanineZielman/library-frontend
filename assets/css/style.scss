@@ -435,6 +435,9 @@ form{
 	align-items: center;
 	margin-bottom: 10px;
 }
+.all-info{
+	column-count: 4;
+}
 .color-dot{
 	width: 12px;
 	height: 12px;
@@ -534,6 +537,23 @@ form{
 			&:after{
 				content: '';
 			}
+		}
+	}
+}
+
+span.wide{
+	width: 200px;
+	display: inline-block;
+	align-items: center;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+	span:after{
+		content: ',';
+		margin-right: 5px;
+	}
+	span:last-child{
+		&:after{
+			content: '';
 		}
 	}
 }
