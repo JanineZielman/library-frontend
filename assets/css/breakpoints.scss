@@ -60,6 +60,7 @@
   }
   .grid{
     .list{
+      margin-top: 10px;
       span.small{
         width: 10vw;
         margin: 0 2vw;
@@ -85,5 +86,8 @@
   }
   .desktop-only{
     display: none;
+  }
+  .top-bar{
+    max-width: 85%;
   }
 }
