@@ -67,13 +67,13 @@ const List = ({ objects, numberOfPosts }) => {
                         <span className="small">{item.attributes.object_id}</span>
                         <span className="small">{item.attributes.type.data?.attributes.type}</span>
                         
-                        <span className="small">
+                        <span className="small color-dot-wrapper">
                           <div className={`color-dot ${item.attributes.colorcode1?.data?.attributes.slug}1`}></div>
                         </span>
                         
-                        <span className="small flex">
+                        <span className="small flex color-dot-wrapper">
                           <div className={`color-dot ${item.attributes.colorcode2?.data?.attributes.slug}2`}></div> 
-                          {item.attributes.year}
+                          <span>{item.attributes.year}</span>
                         </span>
                         <span className="small wide">{item.attributes.title}</span>
                       </div>

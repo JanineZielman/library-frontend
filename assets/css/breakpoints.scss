@@ -61,14 +61,26 @@
   .grid{
     .list{
       span.small{
-        width: 8vw;
+        width: 10vw;
+        margin: 0 2vw;
       }
       span.wide{
-        width: 32vw;
+        width: 40vw;
       }
       .object{
         margin: 10px 0;
       }
+    }
+  }
+  .color-dot-wrapper{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    div{
+      margin: auto;
+    }
+    span{
+      display: none;
     }
   }
   .desktop-only{
