@@ -34,7 +34,7 @@ const List = ({ objects, numberOfPosts }) => {
           loader={<h4>Loading...</h4>}
         >
           <div className="list">
-            <div className="object fixed-list">
+            {/* <div className="object fixed-list">
               <span className="small">Object id</span>
               <span className="small">Type</span>
               <span className="small">Designer</span>
@@ -45,7 +45,7 @@ const List = ({ objects, numberOfPosts }) => {
               <span className="small wide">Binding</span>
               <span className="small wide">Spine</span>
               <span className="small wide">Edge</span>
-            </div>
+            </div> */}
             {posts.map((item, i) => {
               console.log(item)
               return(
@@ -53,53 +53,81 @@ const List = ({ objects, numberOfPosts }) => {
                 {item.attributes.cover_image?.data &&
                   <a className="object" key={`object${i}`} href={`object/${item.attributes.object_id}`}>
                    
-                    <span className="small">{item.attributes.object_id}</span>
-                    <span className="small">{item.attributes.type.data?.attributes.type}</span>
+                    <div className="sticky">
+                      {i == 0 &&
+                      <div className="fixed-list">
+                        <span className="small">Object id</span>
+                        <span className="small">Type</span>
+                        <span className="small">Designer</span>
+                        <span className="small">Year</span>
+                        <span className="small wide">Title</span>
+                      </div>
+                      }
+                      <div className="content">
+                        <span className="small">{item.attributes.object_id}</span>
+                        <span className="small">{item.attributes.type.data?.attributes.type}</span>
+                        
+                        <span className="small">
+                          <div className={`color-dot ${item.attributes.colorcode1?.data?.attributes.slug}1`}></div>
+                        </span>
+                        
+                        <span className="small flex">
+                          <div className={`color-dot ${item.attributes.colorcode2?.data?.attributes.slug}2`}></div> 
+                          {item.attributes.year}
+                        </span>
+                        <span className="small wide">{item.attributes.title}</span>
+                      </div>
+                    </div>
                     
-                    <span className="small">
-                      <div className={`color-dot ${item.attributes.colorcode1?.data?.attributes.slug}1`}></div>
-                    </span>
-                    
-                    <span className="small flex">
-                      <div className={`color-dot ${item.attributes.colorcode2?.data?.attributes.slug}2`}></div> 
-                      {item.attributes.year}
-                    </span>
-                    <span className="small wide">{item.attributes.title}</span>
-                    <span className="small wide languages">
-                      {item.attributes.languages.data.map((lang, i) =>{
-                        return(
-                          <span>{lang.attributes.language}</span>
-                        )
-                      })}
-                    </span>
-                    <span className="small wide covers">
-                      {item.attributes.covers?.data?.map((cover, i) =>{
-                        return(
-                          <span>{cover.attributes.cover}</span>
-                        )
-                      })}
-                    </span>
-                    <span className="small wide bindings">
-                      {item.attributes.bindings.data.map((binding, i) =>{
-                        return(
-                          <span>{binding.attributes.binding}</span>
-                        )
-                      })}
-                    </span>
-                    <span className="small wide spines">
-                      {item.attributes.spine_types.data.map((spine, i) =>{
-                        return(
-                          <span>{spine.attributes.spine}</span>
-                        )
-                      })}
-                    </span>
-                    <span className="small wide edges">
-                      {item.attributes.edges.data.map((edge, i) =>{
-                        return(
-                          <span>{edge.attributes.edge}</span>
-                        )
-                      })}
-                    </span>
+                    <div className="desktop-only">
+                      {i == 0 &&
+                        <div className="fixed-list">
+                          <span className="small wide">Language</span>
+                          <span className="small wide">Cover</span>
+                          <span className="small wide">Binding</span>
+                          <span className="small wide">Spine</span>
+                          <span className="small wide">Edge</span>
+                        </div>
+                      }
+                      
+                      <div className="content">
+                        <span className="small wide languages">
+                          {item.attributes.languages.data.map((lang, i) =>{
+                            return(
+                              <span>{lang.attributes.language}</span>
+                            )
+                          })}
+                        </span>
+                        <span className="small wide covers">
+                          {item.attributes.covers?.data?.map((cover, i) =>{
+                            return(
+                              <span>{cover.attributes.cover}</span>
+                            )
+                          })}
+                        </span>
+                        <span className="small wide bindings">
+                          {item.attributes.bindings.data.map((binding, i) =>{
+                            return(
+                              <span>{binding.attributes.binding}</span>
+                            )
+                          })}
+                        </span>
+                        <span className="small wide spines">
+                          {item.attributes.spine_types.data.map((spine, i) =>{
+                            return(
+                              <span>{spine.attributes.spine}</span>
+                            )
+                          })}
+                        </span>
+                        <span className="small wide edges">
+                          {item.attributes.edges.data.map((edge, i) =>{
+                            return(
+                              <span>{edge.attributes.edge}</span>
+                            )
+                          })}
+                        </span>
+                      </div>
+                    </div>
                   </a>
                 }
                 </>

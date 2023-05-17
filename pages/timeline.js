@@ -61,7 +61,7 @@ const Timeline = ({ objects, numberOfPosts }) => {
                       <div class="all-info">
                         {item.attributes.title &&<div><span className="small">Title: {item.attributes.title}</span></div>}
                         {item.attributes.year &&<div><span className="small">Year: {item.attributes.year}</span></div>}
-                        {item.attributes.type.data.attributes.type && <div><span className="small">Type: {item.attributes.type.data.attributes.type}</span></div>}
+                        {item.attributes.type?.data?.attributes.type && <div><span className="small">Type: {item.attributes.type.data.attributes.type}</span></div>}
                         {item.attributes.languages.data.length > 0 && <div><span className="small wide">Languages: {item.attributes.languages.data.map((lang, i) =>{
                             return(
                               <span>{lang.attributes.language}</span>

@@ -437,10 +437,13 @@ form{
 }
 .all-info{
 	column-count: 4;
+	margin-top: 14px;
 }
 .color-dot{
 	width: 12px;
 	height: 12px;
+	min-width: 12px;
+	min-height: 12px;
 	border-radius: 50%;
 	margin-right: 5px;
 	&.yellow1{
@@ -497,18 +500,23 @@ form{
 }
 
 .list{
-	width: 100%;
-	margin-top: 90px;
+	min-width: 1800px;
+	margin-top: 40px;
 	min-height: 1000px;
 	.object{
 		width: 100%;
 		display: flex;
 		align-items: center;
-		padding: 0.5vw 0.5vw;
 		margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+		.content{
+			height: 24px;
+			align-items: center;
+		}
 		&:hover{
-			background-color: white;
-			color: black;
+			.content{
+				background-color: white;
+				color: black;
+			}
 		}
 	}
 	span.small{
@@ -529,6 +537,7 @@ form{
 		align-items: center;
 		overflow-x: hidden;
 		text-overflow: ellipsis;
+		vertical-align: middle;
 		span:after{
 			content: ',';
 			margin-right: 5px;
@@ -540,6 +549,35 @@ form{
 		}
 	}
 }
+
+.list{
+	.sticky{
+		position: sticky;
+		left: 0;
+	}
+	.fixed-list{
+		margin-bottom: 14px;
+		background-color: #000;
+	}
+	.sticky .content{
+		display: flex;
+		background-color: black;
+	}
+}
+
+// .list .fixed-list{
+// 	position: fixed;
+// 	height: 150px;
+// 	background-color: #000;
+// 	top: 0px;
+// 	margin-top: 0;
+// 	align-items: flex-end;
+// 	padding-bottom: 1vw;
+// 	&:hover{
+// 		background-color: #000;
+// 		color: white;
+// 	}
+// }
 
 span.wide{
 	width: 200px;
@@ -591,20 +629,6 @@ span.wide{
 				position: relative!important;
 			}
 		}
-	}
-}
-
-.list .fixed-list{
-	position: fixed;
-	height: 150px;
-	background-color: #000;
-	top: 0px;
-	margin-top: 0;
-	align-items: flex-end;
-	padding-bottom: 1vw;
-	&:hover{
-		background-color: #000;
-		color: white;
 	}
 }
 

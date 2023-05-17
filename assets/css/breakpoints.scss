@@ -46,6 +46,9 @@
       }
     }
   }
+  .all-info{
+    column-count: 1;
+  }
   .object-page {
     .main-info{
       width: 100%;
@@ -54,5 +57,21 @@
       width: 90%;
       margin-left: 5%;
     }
+  }
+  .grid{
+    .list{
+      span.small{
+        width: 8vw;
+      }
+      span.wide{
+        width: 32vw;
+      }
+      .object{
+        margin: 10px 0;
+      }
+    }
+  }
+  .desktop-only{
+    display: none;
   }
 }
