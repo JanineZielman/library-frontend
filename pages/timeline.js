@@ -5,10 +5,12 @@ import { fetchAPI } from "../lib/api"
 import Image from "../components/image"
 import InfiniteScroll from 'react-infinite-scroll-component';
 import LazyLoad from 'react-lazyload';
+import { useRouter } from 'next/router';
 
 const Timeline = ({ objects, numberOfPosts }) => {
   const [posts, setPosts] = useState(objects);
   const [hasMore, setHasMore] = useState(true);
+  const router = useRouter();
 
   const getMorePosts = async () => {
     const res = await fetchAPI(
@@ -16,11 +18,37 @@ const Timeline = ({ objects, numberOfPosts }) => {
     );
     const newPosts = await res.data;
     setPosts((posts) => [...posts, ...newPosts]);
+    filterObject();
   };
 
   useEffect(() => {
     setHasMore(numberOfPosts > posts.length ? true : false);
   }, [posts]);
+
+  useEffect(() => {
+    filterObject()
+  }, [router.query])
+
+  function filterObject(){
+    if (router.query.year){
+      const elements = document.querySelectorAll(`:not(.${router.query.year})`);
+      elements.forEach((element) => {
+        element.classList.add('non-active');
+      });
+    }
+    if (router.query.designer){
+      const elements = document.querySelectorAll(`:not(.${router.query.designer})`);
+      elements.forEach((element) => {
+        element.classList.add('non-active');
+      });
+    }
+    if (router.query.type){
+      const elements = document.querySelectorAll(`:not(.${router.query.type})`);
+      elements.forEach((element) => {
+        element.classList.add('non-active');
+      });
+    }
+  }
 
   return (
     <Layout>
@@ -37,8 +65,8 @@ const Timeline = ({ objects, numberOfPosts }) => {
               return(
                 <>
                 {item.attributes.cover_image?.data &&
-                  <LazyLoad>
-                    <a className="object" key={`object${i}`} href={`object/${item.attributes.object_id}`}>
+                  <a className={`object ${item.attributes.colorcode1?.data?.attributes.slug}1 ${item.attributes.colorcode2?.data?.attributes.slug}2 ${item.attributes.type?.data?.attributes.slug}`} key={`object${i}`} href={`object/${item.attributes.object_id}`}>
+                    <LazyLoad>
                       <div className="info-book">
                         <div className={`color-dot ${item.attributes.colorcode1?.data?.attributes.slug}1`}></div>
                         <div className={`color-dot ${item.attributes.colorcode2?.data?.attributes.slug}2`}></div>
@@ -93,8 +121,9 @@ const Timeline = ({ objects, numberOfPosts }) => {
                           })}
                         </span></div>}
                       </div>
-                    </a>
-                  </LazyLoad>
+                    </LazyLoad>
+                  </a>
+                  
                 }
                 </>
               )

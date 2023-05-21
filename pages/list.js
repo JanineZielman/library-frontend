@@ -5,10 +5,12 @@ import { fetchAPI } from "../lib/api"
 import Image from "../components/image"
 import InfiniteScroll from 'react-infinite-scroll-component';
 import LazyLoad from 'react-lazyload';
+import { useRouter } from 'next/router';
 
 const List = ({ objects, numberOfPosts }) => {
   const [posts, setPosts] = useState(objects);
   const [hasMore, setHasMore] = useState(true);
+  const router = useRouter();
 
   const getMorePosts = async () => {
     const res = await fetchAPI(
@@ -16,11 +18,37 @@ const List = ({ objects, numberOfPosts }) => {
     );
     const newPosts = await res.data;
     setPosts((posts) => [...posts, ...newPosts]);
+    filterObject();
   };
 
   useEffect(() => {
     setHasMore(numberOfPosts > posts.length ? true : false);
   }, [posts]);
+
+  useEffect(() => {
+    filterObject()
+  }, [router.query])
+
+  function filterObject(){
+    if (router.query.year){
+      const elements = document.querySelectorAll(`:not(.${router.query.year})`);
+      elements.forEach((element) => {
+        element.classList.add('non-active');
+      });
+    }
+    if (router.query.designer){
+      const elements = document.querySelectorAll(`:not(.${router.query.designer})`);
+      elements.forEach((element) => {
+        element.classList.add('non-active');
+      });
+    }
+    if (router.query.type){
+      const elements = document.querySelectorAll(`:not(.${router.query.type})`);
+      elements.forEach((element) => {
+        element.classList.add('non-active');
+      });
+    }
+  }
 
   return (
     <Layout>
@@ -47,11 +75,10 @@ const List = ({ objects, numberOfPosts }) => {
               <span className="small wide">Edge</span>
             </div> */}
             {posts.map((item, i) => {
-              console.log(item)
               return(
                 <>
                 {item.attributes.cover_image?.data &&
-                  <a className="object" key={`object${i}`} href={`object/${item.attributes.object_id}`}>
+                  <a className={`object ${item.attributes.colorcode1?.data?.attributes.slug}1 ${item.attributes.colorcode2?.data?.attributes.slug}2 ${item.attributes.type?.data?.attributes.slug}`} key={`object${i}`} href={`object/${item.attributes.object_id}`}>
                    
                     <div className="sticky">
                       {i == 0 &&

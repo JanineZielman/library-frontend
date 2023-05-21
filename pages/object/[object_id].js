@@ -5,7 +5,6 @@ import { fetchAPI } from "../../lib/api"
 import Image from "../../components/image"
 
 const Object = ({ object }) => {
-  console.log(object)
   let relations = [];
   for (let i = 0; i < object.Relations.length; i++) { 
     relations.push(object.Relations[i].person_role.data.attributes.role)

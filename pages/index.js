@@ -50,9 +50,7 @@ const Home = ({ objects, numberOfPosts }) => {
       });
     }
   }
-  
 
-  console.log(posts)
 
   return (
     <Layout>
