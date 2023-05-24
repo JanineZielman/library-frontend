@@ -33,7 +33,6 @@ const Nav = () => {
     input = document.getElementById("search");
     filter = input.value.toUpperCase();
     object = document.getElementsByClassName("object");
-    console.log(object)
     for (i = 0; i < object.length; i++) {
         span = object[i].getElementsByTagName("span")[0];
         txtValue = span.textContent || span.innerText;

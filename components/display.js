@@ -3,10 +3,10 @@ import Image from '../components/image'
 import { fetchAPI } from "../lib/api"
 
 const Display = ({fieldId, fileName, submitKey}) => {
-	const [objectId, setObjectId] = useState(null);
+	const [objectId, setObjectId] = useState('');
 	const [loading, setLoading] = useState(false);
 
-	const [newObject, setNewObject] = useState(null);
+	const [newObject, setNewObject] = useState('');
 
 	const handleSubmit = async (e) => {
 		e?.preventDefault()
@@ -82,7 +82,6 @@ const Display = ({fieldId, fileName, submitKey}) => {
 			}
 		);
 		setNewObject(e.target.value)
-		console.log(e.target.value)
 	}
 	
 	useEffect(() => {
@@ -106,14 +105,16 @@ const Display = ({fieldId, fileName, submitKey}) => {
 		}
 	},[submitKey])
 
+	console.log(newObject)
+
 	return(
 		<>
 			<div className='display'>
-				{!objectId &&
+				{!objectId && newObject != '' &&
 					<div className='error'>
 						
 						<h1>
-							<span>{newObject}</span>
+							<span className='uppercase'>{newObject}</span>
 							This object does not exist in the database!
 							<form onSubmit={newSubmit}>
 								<input type='submit' value='Upload' className='btn new-upload' />

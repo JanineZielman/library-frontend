@@ -62,18 +62,6 @@ const List = ({ objects, numberOfPosts }) => {
           loader={<h4>Loading...</h4>}
         >
           <div className="list">
-            {/* <div className="object fixed-list">
-              <span className="small">Object id</span>
-              <span className="small">Type</span>
-              <span className="small">Designer</span>
-              <span className="small">Year</span>
-              <span className="small wide">Title</span>
-              <span className="small wide">Language</span>
-              <span className="small wide">Cover</span>
-              <span className="small wide">Binding</span>
-              <span className="small wide">Spine</span>
-              <span className="small wide">Edge</span>
-            </div> */}
             {posts.map((item, i) => {
               return(
                 <>
