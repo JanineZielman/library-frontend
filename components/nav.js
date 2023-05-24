@@ -28,6 +28,23 @@ const Nav = () => {
     element2.classList.toggle("open");
   }
 
+  function searchFilter(){
+    var input, filter, object, span, i, txtValue;
+    input = document.getElementById("search");
+    filter = input.value.toUpperCase();
+    object = document.getElementsByClassName("object");
+    console.log(object)
+    for (i = 0; i < object.length; i++) {
+        span = object[i].getElementsByTagName("span")[0];
+        txtValue = span.textContent || span.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          object[i].style.display = "";
+        } else {
+          object[i].style.display = "none";
+        }
+    }
+  }
+
 
   return (
     <div>
@@ -44,7 +61,8 @@ const Nav = () => {
       </nav>
       <div className="filter-search">
         <div className="filter button" onClick={openModal}>Filter</div>
-        <div className="search button">Search</div>      
+        {/* <div className="search button">Search</div>       */}
+        <input type="text" id="search" onKeyUp={searchFilter} placeholder="Search..."></input>
       </div>
       <div className="filter-menu" id="modal">
         <div className="filter-modal columns" id="modal1">
