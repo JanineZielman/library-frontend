@@ -30,7 +30,8 @@ h2{
 }
 h3{
 	font-size: $h3;
-	font-family: 'Avara';
+	// font-family: 'Avara';
+	font-family: 'JetBrains Mono', monospace;
 }
 h4{
 	font-size: $h4;
@@ -452,6 +453,9 @@ form{
 	}
 	h1, h2, h3{
 		margin: 0;
+	}
+	h3{
+		margin-bottom: 10px;
 	}
 }
 
