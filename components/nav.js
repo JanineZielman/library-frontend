@@ -8,6 +8,7 @@ const Nav = () => {
   const [designer, setDesigner] = useState(router.query.designer ? router.query.designer : '');
   const [year, setYear] = useState(router.query.year ? router.query.year : '');
   const [type, setType] = useState(router.query.type ? router.query.type : '');
+  const [search, setSearch] = useState(router.query.search ? router.query.search : '');
 
 
   function openModal() {
@@ -30,19 +31,12 @@ const Nav = () => {
   }
 
   function searchFilter(){
-    var input, filter, object, span, i, txtValue;
-    input = document.getElementById("search");
-    filter = input.value.toUpperCase();
-    object = document.getElementsByClassName("object");
-    for (i = 0; i < object.length; i++) {
-        span = object[i].getElementsByTagName("span")[0];
-        txtValue = span.textContent || span.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          object[i].style.display = "";
-        } else {
-          object[i].style.display = "none";
-        }
-    }
+    var input = document.getElementById("search");
+    document.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        window.location.href = `${router.pathname}?search=${input.value}`
+      }
+    });
   }
 
 
@@ -54,9 +48,9 @@ const Nav = () => {
         </div>
 
         <div className="links">
-          <a href={`/${designer && `?designer=${designer}`}${year && `&year=${year}`}${type && `&type=${type}`}`}>Grid</a>
-          <a href={`/list${designer && `?designer=${designer}`}${year && `&year=${year}`}${type && `&type=${type}`}`}>List</a>
-          <a href={`/timeline${designer && `?designer=${designer}`}${year && `&year=${year}`}${type && `&type=${type}`}`}>Timeline</a>
+          <a href={`/?${designer && `&designer=${designer}`}${year && `&year=${year}`}${type && `&type=${type}`}${search && `&search=${search}`}`}>Grid</a>
+          <a href={`/list?${designer && `&designer=${designer}`}${year && `&year=${year}`}${type && `&type=${type}`}${search && `&search=${search}`}`}>List</a>
+          <a href={`/timeline?${designer && `&designer=${designer}`}${year && `&year=${year}`}${type && `&type=${type}`}${search && `&search=${search}`}`}>Timeline</a>
         </div>
       </nav>
       <div className="filter-search">

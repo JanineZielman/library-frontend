@@ -16,10 +16,12 @@ const List = ({ objects, numberOfPosts }) => {
   const [designer, setDesigner] = useState(router.query.designer ? router.query.designer : null);
   const [year, setYear] = useState(router.query.year ? router.query.year : null);
   const [type, setType] = useState(router.query.type ? router.query.type : null);
+  const [search, setSearch] = useState(router.query.search ? router.query.search : null);
 
   const filterPosts = async () => {
     const res = await fetchAPI(
       `/objects?
+      ${search ? `&filters[object_id][$eq]=${search}` : ``}
       ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
       ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
       ${type ? `&filters[colorcode2][slug][$eq]=${type}` : ``}
@@ -39,6 +41,7 @@ const List = ({ objects, numberOfPosts }) => {
     const res = await fetchAPI(
       `/objects?
       &pagination[start]=${posts.length}
+      ${search ? `&filters[object_id][$eq]=${search}` : ``}
       ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
       ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
       ${type ? `&filters[colorcode2][slug][$eq]=${type}` : ``}
