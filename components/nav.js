@@ -9,6 +9,7 @@ const Nav = () => {
   const [year, setYear] = useState(router.query.year ? router.query.year : '');
   const [type, setType] = useState(router.query.type ? router.query.type : '');
 
+
   function openModal() {
     var modal = document.getElementById("modal1");
     modal.classList.toggle("open");
@@ -60,27 +61,26 @@ const Nav = () => {
       </nav>
       <div className="filter-search">
         <div className="filter button" onClick={openModal}>Filter</div>
-        {/* <div className="search button">Search</div>       */}
-        <input type="text" id="search" onKeyUp={searchFilter} placeholder="Search..."></input>
+        <input className="search button" type="text" id="search" onKeyUp={searchFilter} placeholder="Search..."></input>
       </div>
       <div className="filter-menu" id="modal">
         <div className="filter-modal columns" id="modal1">
           <div className="column">
             <span className="small">Designer</span>
             <div className="filter-items">
-              <a className="flex" href={`${router.pathname}?designer=blue1${year && `&year=${year}`}${type && `&type=${type}`}`}>
+              <a className="flex" href={`${router.pathname}?designer=blue${year && `&year=${year}`}${type && `&type=${type}`}`}>
                 <div className={`color-dot blue1`}></div>
                 <span className="small">Alums</span>
               </a>
-              <a className="flex" href={`${router.pathname}?designer=yellow1${year && `&year=${year}`}${type && `&type=${type}`}`}>
+              <a className="flex" href={`${router.pathname}?designer=yellow${year && `&year=${year}`}${type && `&type=${type}`}`}>
                 <div className={`color-dot yellow1`}></div>
                 <span className="small">External</span>
               </a>
-              <a className="flex" href={`${router.pathname}?designer=red1${year && `&year=${year}`}${type && `&type=${type}`}`}>
+              <a className="flex" href={`${router.pathname}?designer=red${year && `&year=${year}`}${type && `&type=${type}`}`}>
                 <div className={`color-dot red1`}></div>
                 <span className="small">Student</span>
               </a>
-              <a className="flex" href={`${router.pathname}?designer=green1${year && `&year=${year}`}${type && `&type=${type}`}`}>
+              <a className="flex" href={`${router.pathname}?designer=green${year && `&year=${year}`}${type && `&type=${type}`}`}>
                 <div className={`color-dot green1`}></div>
                 <span className="small">Published</span>
               </a>
@@ -89,27 +89,27 @@ const Nav = () => {
           <div className="column">
             <span className="small">Year</span>
             <div className="filter-items">
-            <a className="flex" href={`${router.pathname}?year=gold2${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
+            <a className="flex" href={`${router.pathname}?year=gold${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
                 <div className={`color-dot gold2`}></div>
                 <span className="small">2021-2030</span>
               </a>
-              <a className="flex" href={`${router.pathname}?year=purple2${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
+              <a className="flex" href={`${router.pathname}?year=purple${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
                 <div className={`color-dot purple2`}></div>
                 <span className="small">2011-2020</span>
               </a>
-              <a className="flex" href={`${router.pathname}?year=green2${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
+              <a className="flex" href={`${router.pathname}?year=green${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
                 <div className={`color-dot green2`}></div>
                 <span className="small">2001-2010</span>
               </a>
-              <a className="flex" href={`${router.pathname}?year=blue2${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
+              <a className="flex" href={`${router.pathname}?year=blue${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
                 <div className={`color-dot blue2`}></div>
                 <span className="small">1991-2000</span>
               </a>
-              <a className="flex" href={`${router.pathname}?year=orange2${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
+              <a className="flex" href={`${router.pathname}?year=orange${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
                 <div className={`color-dot orange2`}></div>
                 <span className="small">1981-1990</span>
               </a>
-              <a className="flex" href={`${router.pathname}?year=black2${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
+              <a className="flex" href={`${router.pathname}?year=black${designer && `&designer=${designer}`}${type && `&type=${type}`}`}>
                 <div className={`color-dot black2`}></div>
                 <span className="small">… - 1980</span>
               </a>
@@ -129,7 +129,7 @@ const Nav = () => {
 
         <div className="filter-modal2 columns" id="modal2">
           <div className="column">
-            <span className="small">Designer</span>
+            <span className="small">Language</span>
             <div className="filter-items">
               <span className="small">Designer</span>
               <span className="small">Designer</span>
@@ -138,7 +138,7 @@ const Nav = () => {
             </div>
           </div>
           <div className="column">
-            <span className="small">Year</span>
+            <span className="small">Cover</span>
             <div className="filter-items">
               <span className="small">Designer</span>
               <span className="small">Designer</span>
@@ -147,7 +147,7 @@ const Nav = () => {
             </div>
           </div>
           <div className="column">
-            <span className="small">Type</span>
+            <span className="small">Cover Type</span>
             <div className="filter-items">
               <span className="small">Designer</span>
               <span className="small">Designer</span>
@@ -156,7 +156,7 @@ const Nav = () => {
             </div>
           </div>
           <div className="column">
-            <span className="small">Type</span>
+            <span className="small">Spine</span>
             <div className="filter-items">
               <span className="small">Designer</span>
               <span className="small">Designer</span>

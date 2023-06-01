@@ -10,45 +10,47 @@ import { useRouter } from 'next/router';
 const Timeline = ({ objects, numberOfPosts }) => {
   const [posts, setPosts] = useState(objects);
   const [hasMore, setHasMore] = useState(true);
+  const [amountPosts, setAmountPosts] = useState(numberOfPosts)
   const router = useRouter();
 
-  const getMorePosts = async () => {
+  const [designer, setDesigner] = useState(router.query.designer ? router.query.designer : null);
+  const [year, setYear] = useState(router.query.year ? router.query.year : null);
+  const [type, setType] = useState(router.query.type ? router.query.type : null);
+
+  const filterPosts = async () => {
     const res = await fetchAPI(
-      `/objects?pagination[start]=${posts.length}&populate=*`
+      `/objects?
+      ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
+      ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
+      ${type ? `&filters[colorcode2][slug][$eq]=${type}` : ``}
+      &populate=*`
     );
+    setAmountPosts(res.meta.pagination.total);
+    console.log(res.meta.pagination.total)
     const newPosts = await res.data;
-    setPosts((posts) => [...posts, ...newPosts]);
-    filterObject();
+    setPosts(newPosts)
   };
 
   useEffect(() => {
-    setHasMore(numberOfPosts > posts.length ? true : false);
-  }, [posts]);
-
-  useEffect(() => {
-    filterObject()
+    filterPosts();
   }, [router.query])
 
-  function filterObject(){
-    if (router.query.year){
-      const elements = document.querySelectorAll(`:not(.${router.query.year})`);
-      elements.forEach((element) => {
-        element.classList.add('non-active');
-      });
-    }
-    if (router.query.designer){
-      const elements = document.querySelectorAll(`:not(.${router.query.designer})`);
-      elements.forEach((element) => {
-        element.classList.add('non-active');
-      });
-    }
-    if (router.query.type){
-      const elements = document.querySelectorAll(`:not(.${router.query.type})`);
-      elements.forEach((element) => {
-        element.classList.add('non-active');
-      });
-    }
-  }
+  const getMorePosts = async () => {
+    const res = await fetchAPI(
+      `/objects?
+      &pagination[start]=${posts.length}
+      ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
+      ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
+      ${type ? `&filters[colorcode2][slug][$eq]=${type}` : ``}
+      &populate=*`
+    );
+    const newPosts = await res.data;
+    setPosts((posts) => [...posts, ...newPosts]);
+  };
+
+  useEffect(() => {
+    setHasMore(amountPosts > posts.length ? true : false);
+  }, [posts]);
 
   return (
     <Layout>
