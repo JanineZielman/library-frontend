@@ -7,7 +7,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import LazyLoad from 'react-lazyload';
 import { useRouter } from 'next/router';
 
-const Home = ({ objects, numberOfPosts }) => {
+const Home = ({ objects, numberOfPosts, languages, covers, binding, inside, edge, spine }) => {
   const [posts, setPosts] = useState(objects);
   const [hasMore, setHasMore] = useState(true);
   const [amountPosts, setAmountPosts] = useState(numberOfPosts)
@@ -50,7 +50,7 @@ const Home = ({ objects, numberOfPosts }) => {
       ${search ? `&filters[$or][3][type][slug][$eq]=${search}` : ``}
       ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
       ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
-      ${type ? `&filters[type][slug][$eq]=${type}` : ``}
+    ${type ? `&filters[type][slug][$eq]=${type}` : ``}
       &populate=*`
     );
     const newPosts = await res.data;
@@ -62,7 +62,7 @@ const Home = ({ objects, numberOfPosts }) => {
   }, [posts]);
   
   return (
-    <Layout>
+    <Layout languages={languages} covers={covers} binding={binding} inside={inside} edge={edge} spine={spine}>
       {/* <Seo seo={homepage.attributes.seo} /> */}
       <div className="grid">
         <InfiniteScroll
@@ -101,8 +101,14 @@ const Home = ({ objects, numberOfPosts }) => {
 
 export async function getServerSideProps() {
 
-  const [objectRes] = await Promise.all([
+  const [objectRes, languagesRes, coversRes, bindingRes, spineRes, insideRes, edgeRes] = await Promise.all([
     fetchAPI("/objects?populate=*"),
+    fetchAPI("/languages?populate=*"),
+    fetchAPI("/covers?populate=*"),
+    fetchAPI("/bindings?populate=*"),
+    fetchAPI("/spines?populate=*"),
+    fetchAPI("/insides?populate=*"),
+    fetchAPI("/edges?populate=*"),
   ])
 
   const numberOfPosts = objectRes.meta.pagination.total;
@@ -110,6 +116,12 @@ export async function getServerSideProps() {
   return {
     props: {
       objects: objectRes.data,
+      languages: languagesRes.data,
+      covers: coversRes.data,
+      binding: bindingRes.data,
+      spine: spineRes.data,
+      inside: insideRes.data,
+      edge: edgeRes.data,
       numberOfPosts: +numberOfPosts,
     }
   }

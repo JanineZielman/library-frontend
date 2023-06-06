@@ -2,7 +2,9 @@ import React, {useState} from "react"
 import Link from "next/link"
 import { useRouter } from 'next/router'
 
-const Nav = () => {
+const Nav = ({ languages, covers, binding, inside, edge, spine}) => {
+
+  console.log(languages)
   const router = useRouter()
 
   const [designer, setDesigner] = useState(router.query.designer ? router.query.designer : '');
@@ -142,37 +144,61 @@ const Nav = () => {
           <div className="column">
             <span className="small">Language</span>
             <div className="filter-items">
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
+              {languages?.map((item, i) => {
+                return(
+                  <span className="small option">{item.attributes.language}</span>
+                )
+              })}
             </div>
           </div>
           <div className="column">
             <span className="small">Cover</span>
             <div className="filter-items">
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
+              {covers?.map((item, i) => {
+                return(
+                  <span className="small option">{item.attributes.cover}</span>
+                )
+              })}
             </div>
           </div>
           <div className="column">
-            <span className="small">Cover Type</span>
+            <span className="small">Binding</span>
             <div className="filter-items">
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
+              {binding?.map((item, i) => {
+                return(
+                  <span className="small option">{item.attributes.binding}</span>
+                )
+              })}
+            </div>
+          </div>
+          <div className="column">
+            <span className="small">Edge</span>
+            <div className="filter-items">
+              {edge?.map((item, i) => {
+                return(
+                  <span className="small option">{item.attributes.edge}</span>
+                )
+              })}
+            </div>
+          </div>
+          <div className="column">
+            <span className="small">Inside</span>
+            <div className="filter-items">
+              {inside?.map((item, i) => {
+                return(
+                  <span className="small option">{item.attributes.inside}</span>
+                )
+              })}
             </div>
           </div>
           <div className="column">
             <span className="small">Spine</span>
             <div className="filter-items">
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
-              <span className="small">Designer</span>
+              {spine?.map((item, i) => {
+                return(
+                  <span className="small option">{item.attributes.spine}</span>
+                )
+              })}
             </div>
           </div>
         </div>
