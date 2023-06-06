@@ -21,7 +21,10 @@ const List = ({ objects, numberOfPosts }) => {
   const filterPosts = async () => {
     const res = await fetchAPI(
       `/objects?
-      ${search ? `&filters[object_id][$eq]=${search}` : ``}
+      ${search ? `&filters[$or][0][object_id][$eq]=${search}` : ``}
+      ${search ? `&filters[$or][1][title][$eq]=${search}` : ``}
+      ${search ? `&filters[$or][2][year][$eq]=${search}` : ``}
+      ${search ? `&filters[$or][3][type][slug][$eq]=${search}` : ``}
       ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
       ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
       ${type ? `&filters[colorcode2][slug][$eq]=${type}` : ``}
@@ -41,7 +44,10 @@ const List = ({ objects, numberOfPosts }) => {
     const res = await fetchAPI(
       `/objects?
       &pagination[start]=${posts.length}
-      ${search ? `&filters[object_id][$eq]=${search}` : ``}
+      ${search ? `&filters[$or][0][object_id][$eq]=${search}` : ``}
+      ${search ? `&filters[$or][1][title][$eq]=${search}` : ``}
+      ${search ? `&filters[$or][2][year][$eq]=${search}` : ``}
+      ${search ? `&filters[$or][3][type][slug][$eq]=${search}` : ``}
       ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
       ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
       ${type ? `&filters[colorcode2][slug][$eq]=${type}` : ``}

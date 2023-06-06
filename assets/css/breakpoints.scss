@@ -93,4 +93,34 @@
   .filter{
     display: none;
   }
+  .landing{
+    flex-direction: column-reverse;
+    width: 90%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    .description{
+      width: 100%;
+      position: relative;
+      margin-top: 24px;
+      span{
+        position: relative;
+        width: 100%;
+        left: 0;
+      }
+    }
+    .hug{
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  
+  .footer-text{
+    width: 90%;
+    margin-top: 100px;
+    margin-bottom: 14px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
 }

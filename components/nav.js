@@ -39,6 +39,8 @@ const Nav = () => {
     });
   }
 
+  console.log(router)
+
 
   return (
     <div>
@@ -53,10 +55,12 @@ const Nav = () => {
           <a href={`/timeline?${designer && `&designer=${designer}`}${year && `&year=${year}`}${type && `&type=${type}`}${search && `&search=${search}`}`}>Timeline</a>
         </div>
       </nav>
-      <div className="filter-search">
-        <div className="filter button" onClick={openModal}>Filter</div>
-        <input className="search button" type="text" id="search" onKeyUp={searchFilter} placeholder="Search..."></input>
-      </div>
+      {router.asPath != '/info' &&
+        <div className="filter-search">
+          <div className="filter button" onClick={openModal}>Filter</div>
+          <input className="search button" type="text" id="search" onKeyUp={searchFilter} placeholder="Search..."></input>
+        </div>
+      }
       <div className="filter-menu" id="modal">
         <div className="filter-modal columns" id="modal1">
           <div className="column">

@@ -470,6 +470,7 @@ input.search{
 .info-book{
 	display: flex;
 	align-items: center;
+	margin-bottom: 10px;
 }
 .all-info{
 	column-count: 4;
@@ -638,6 +639,7 @@ span.wide{
 		position: sticky;
 		left: 24px;
 		z-index: 3;
+		margin-bottom: 0;
 	}
 	.object{
 		width: 100%;
@@ -760,4 +762,36 @@ span.wide{
 
 .uppercase{
 	text-transform: uppercase;
+}
+
+.landing{
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 100px;
+	position: relative;
+	.description{
+		width: 25vw;
+		position: relative;
+		span{
+			position: fixed;
+			width: 25vw;
+			line-height: 1.5;
+			left: 2vw;
+		}
+	}
+	.hug{
+		// width: 100%;
+		width: 65%;
+		max-width: 65%;
+		object-fit: contain;
+	}
+}
+
+.footer-text{
+	width: 25vw;
+	margin-top: 100px;
+	margin-bottom: 14px;
+	display: block;
+	margin-left: 2vw;
+	line-height: 1.5;
 }
