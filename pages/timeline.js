@@ -27,7 +27,7 @@ const Timeline = ({ objects, numberOfPosts }) => {
       ${search ? `&filters[$or][3][type][slug][$eq]=${search}` : ``}
       ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
       ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
-      ${type ? `&filters[colorcode2][slug][$eq]=${type}` : ``}
+      ${type ? `&filters[type][slug][$eq]=${type}` : ``}
       &populate=*`
     );
     setAmountPosts(res.meta.pagination.total);
@@ -50,7 +50,7 @@ const Timeline = ({ objects, numberOfPosts }) => {
       ${search ? `&filters[$or][3][type][slug][$eq]=${search}` : ``}
       ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
       ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
-      ${type ? `&filters[colorcode2][slug][$eq]=${type}` : ``}
+      ${type ? `&filters[type][slug][$eq]=${type}` : ``}
       &populate=*`
     );
     const newPosts = await res.data;

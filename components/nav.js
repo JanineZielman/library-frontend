@@ -116,11 +116,24 @@ const Nav = () => {
           <div className="column">
             <span className="small">Type</span>
             <div className="filter-items">
-              <span className="small">Book</span>
-              <span className="small">Dummies</span>
-              <span className="small">Ephemera</span>
-              <span className="small">Magazine</span>
-              <span className="small">Zine</span>
+              <a href={`${router.pathname}?type=book${designer && `&designer=${designer}`}${year && `&year=${year}`}`}>
+                <span className="small">Book</span>
+              </a>
+              <a href={`${router.pathname}?type=dummies${designer && `&designer=${designer}`}${year && `&year=${year}`}`}>
+                <span className="small">Dummies</span>
+              </a>
+              <a href={`${router.pathname}?type=ephemera${designer && `&designer=${designer}`}${year && `&year=${year}`}`}>
+                <span className="small">Ephemera</span>
+              </a>
+              <a href={`${router.pathname}?type=magazine${designer && `&designer=${designer}`}${year && `&year=${year}`}`}>
+                <span className="small">Magazine</span>
+              </a>
+              <a href={`${router.pathname}?type=object${designer && `&designer=${designer}`}${year && `&year=${year}`}`}>
+                <span className="small">Object</span>
+              </a>
+              <a href={`${router.pathname}?type=zine${designer && `&designer=${designer}`}${year && `&year=${year}`}`}>
+                <span className="small">Zine</span>
+              </a>
             </div>
           </div>
         </div>
