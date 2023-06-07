@@ -26,6 +26,8 @@ const MyApp = ({ Component, pageProps }) => {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffc40d"/>
         <meta name="msapplication-TileColor" content="#ffc40d"/>
         <meta name="theme-color" content="#ffffff"></meta>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
       </Head>
       <GlobalContext.Provider value={global.attributes}>
         <Component {...pageProps} />

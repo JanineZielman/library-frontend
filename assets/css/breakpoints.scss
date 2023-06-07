@@ -1,50 +1,26 @@
 @media only screen and (max-width: 900px) {
   nav{
     font-size: 18px;
+    width: 95%;
+    padding-top: 5px;
+    margin-left: 2.5%;
     .logo{
       width: auto;
     }
     .links{
       width: 50%;
+      justify-content: end;
+      & a:nth-child(2),  & a:nth-child(3){
+        display: none;
+      }
     }
   }
   .filter-search{
-    top: 35px;
+    top: 37px;
   }
   .button{
     font-size: 12px;
     margin-right: 10px;
-  }
-  .grid .infinite-scroll-component{
-    flex-direction: column;
-    .object{
-      width: 95%;
-      height: auto;
-      margin: 24px 2.5%;
-      position: relative;
-      .image-wrapper{
-        display: flex;
-        justify-content: center;
-        div{
-          display: inline-block!important;
-          width: auto;
-          height: 100%;
-          padding: 0;
-          position: relative !important;
-          div {
-            width: 0;
-            height: 0;
-            padding: 0!important;
-            position: relative !important;
-          }
-          img {
-            width: auto !important;
-            height: auto !important;
-            position: relative!important;
-          }
-        }
-      }
-    }
   }
   .all-info{
     column-count: 1;
@@ -59,6 +35,9 @@
     }
   }
   .grid{
+    .object{
+      width: 100%;
+    }
     .list{
       margin-top: 10px;
       span.small{

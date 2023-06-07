@@ -60,6 +60,7 @@ body, html{
 	margin: 0;
 	padding: 0;
 	width: 100vw;
+	max-width: 100vw;
 	overflow-x: hidden;
 	background-color: #000;
 	color: white;
@@ -635,6 +636,7 @@ span.wide{
 	position: relative;
 	margin-left: 24px;
 	margin-top: 14px;
+	max-width: calc(100vw - 24px);
 	.info-book{
 		position: sticky;
 		left: 24px;

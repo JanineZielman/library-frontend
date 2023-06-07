@@ -38,7 +38,7 @@ const Object = ({ object }) => {
                   <div className="info">{object.year}</div>
                 </span>
               }
-              {object.type &&
+              {object.type.data &&
                 <span className="small">
                   <div className="ident">Type:</div> 
                   <div className="info">{object.type.data.attributes.type}</div>
