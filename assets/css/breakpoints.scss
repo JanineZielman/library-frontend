@@ -103,3 +103,19 @@
   }
   
 }
+
+@media only screen and (min-width: 1600px) {
+  .list{
+    span.small{
+      font-size: 16px;
+    }
+    .color-dot{
+      width: 16px;
+      height: 16px;
+    }
+    .object .content{
+      height: 50px;
+      line-height: 50px;
+    }
+  }
+}
