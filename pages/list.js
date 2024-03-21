@@ -28,7 +28,7 @@ const List = ({ objects, numberOfPosts, languages, covers, binding, inside, edge
       ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
       ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
       ${type ? `&filters[type][slug][$eq]=${type}` : ``}
-      &populate=*`
+      &populate=*&sort=createdAt:desc`
     );
     setAmountPosts(res.meta.pagination.total);
     console.log(res.meta.pagination.total)
@@ -51,7 +51,7 @@ const List = ({ objects, numberOfPosts, languages, covers, binding, inside, edge
       ${designer ? `&filters[colorcode1][slug][$eq]=${designer}` : ``}
       ${year ? `&filters[colorcode2][slug][$eq]=${year}` : ``}
       ${type ? `&filters[type][slug][$eq]=${type}` : ``}
-      &populate=*`
+      &populate=*&sort=createdAt:desc`
     );
     const newPosts = await res.data;
     setPosts((posts) => [...posts, ...newPosts]);
@@ -170,7 +170,7 @@ const List = ({ objects, numberOfPosts, languages, covers, binding, inside, edge
 export async function getServerSideProps() {
 
   const [objectRes, languagesRes, coversRes, bindingRes, spineRes, insideRes, edgeRes] = await Promise.all([
-    fetchAPI("/objects?populate=*"),
+    fetchAPI("/objects?populate=*&sort=createdAt:desc"),
     fetchAPI("/languages?populate=*"),
     fetchAPI("/covers?populate=*"),
     fetchAPI("/bindings?populate=*"),
